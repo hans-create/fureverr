@@ -2,7 +2,6 @@
 import { memorialData } from '../data/memorialData';
 import Layout from '../layouts/Layout.astro';
 import GuestBook from '../components/GuestBook.astro';
-import ShareFeature from '../components/ShareFeature.astro';
 
 export function getStaticPaths() {
   return memorialData;
@@ -98,15 +97,6 @@ const currentTab = Astro.url.searchParams.get('tab') || 'timeline';
         >
           <span class="text-xl">📝</span> Guestbook
         </a>
-        <a 
-          href={`/${memorial}?tab=share`}
-          class:list={[
-            "flex-1 px-6 py-4 text-center hover:bg-gray-50 transition-colors",
-            currentTab === 'share' ? "text-primary-600 border-b-2 border-primary-600" : "text-gray-600"
-          ]}
-        >
-          <span class="text-xl">💝</span> Share
-        </a>
       </nav>
     </div>
 
@@ -128,15 +118,6 @@ const currentTab = Astro.url.searchParams.get('tab') || 'timeline';
             petName={memorialInfo.name}
             birthDate={memorialInfo.years.split('-')[0].trim()}
             deathDate={memorialInfo.years.split('-')[1].trim()}
-          />
-        </div>
-
-        {/* Share Section */}
-        <div class={currentTab === 'share' ? '' : 'hidden'}>
-          <ShareFeature 
-            petName={memorialInfo.name}
-            pageUrl={Astro.url.href.split('?')[0]}
-            previewImage={memorialInfo.photo}
           />
         </div>
       </div>
