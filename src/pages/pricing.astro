@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SparklesIcon, BeakerIcon, HeartIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
+---
+
+<Layout title="Pricing - Furever">
+  <div class="min-h-screen bg-[your-background-color]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Hero Section */}
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-6">
+          A Place of Love, Furever
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          At Furever, we believe every bond deserves to be celebrated and every memory cherished. We are more than a platform — we're a safe, comforting space where your beloved pets live on in your heart and stories. Whether you're creating a memorial for the first time or adding the finishing touches to your pet's life story, Furever is here for you.
+        </p>
+      </div>
+
+      {/* Pricing Introduction */}
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Choose the Perfect Way to Celebrate Your Pet's Legacy
+        </h2>
+        <p class="text-lg text-gray-600">
+          No matter your journey, we've created plans to fit your needs:
+        </p>
+      </div>
+
+      {/* Pricing Table */}
+      <div class="max-w-5xl mx-auto mb-16">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-gray-100">
+              <tr class="border-b border-gray-200">
+                <th class="py-4 px-6 text-left text-gray-500 font-medium">Feature</th>
+                <th class="py-4 px-6 text-left text-gray-900 font-medium">Free (Starter)</th>
+                <th class="py-4 px-6 text-left text-gray-900 font-medium">Premium (Forever)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-200">
+                <td class="py-4 px-6 text-gray-500">Price</td>
+                <td class="py-4 px-6">Free</td>
+                <td class="py-4 px-6">$49.99 One-Time</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-4 px-6 text-gray-500">Pet Memorials</td>
+                <td class="py-4 px-6">1 memorial page</td>
+                <td class="py-4 px-6">Unlimited <span class="text-xs text-blue-600">(Under Development)</span></td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-4 px-6 text-gray-500">Templates</td>
+                <td class="py-4 px-6">Classic layout only</td>
+                <td class="py-4 px-6">Access beautifully designed, customizable templates <span class="text-xs text-blue-600">(Under Development)</span></td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-4 px-6 text-gray-500">Media Uploads</td>
+                <td class="py-4 px-6">Add up to 5 pictures</td>
+                <td class="py-4 px-6">Unlimited photos, videos, and audio memories <span class="text-xs text-blue-600">(Under Development)</span></td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-4 px-6 text-gray-500">Guest Book</td>
+                <td class="py-4 px-6">Not included</td>
+                <td class="py-4 px-6">Invite friends and family to leave heartfelt tributes <span class="text-xs text-blue-600">(Under Development)</span></td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-4 px-6 text-gray-500">Privacy Settings</td>
+                <td class="py-4 px-6">Public or private</td>
+                <td class="py-4 px-6">Advanced password-protected privacy <span class="text-xs text-blue-600">(Under Development)</span></td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-4 px-6 text-gray-500">Timeline</td>
+                <td class="py-4 px-6">Not included</td>
+                <td class="py-4 px-6">Create a life story timeline with photos and videos <span class="text-xs text-blue-600">(Under Development)</span></td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-4 px-6 text-gray-500">Downloadable Memorials</td>
+                <td class="py-4 px-6">Not available</td>
+                <td class="py-4 px-6">Download and share printable keepsakes <span class="text-xs text-blue-600">(Under Development)</span></td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 text-gray-500">Custom URL</td>
+                <td class="py-4 px-6">Not included</td>
+                <td class="py-4 px-6">Create a unique, personalized link for your memorial <span class="text-xs text-blue-600">(Under Development)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Premium Features */}
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">
+          What's Included in the Premium (Forever) Plan?
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center">
+                <SparklesIcon class="w-5 h-5 text-rose-600" />
+              </div>
+              <h3 class="text-lg font-medium text-gray-900">Unlimited Tributes</h3>
+            </div>
+            <p class="text-gray-600">
+              Celebrate every pet you've loved and create individual, detailed memorials for each.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center">
+                <HeartIcon class="w-5 h-5 text-rose-600" />
+              </div>
+              <h3 class="text-lg font-medium text-gray-900">Heartfelt Guest Book</h3>
+            </div>
+            <p class="text-gray-600">
+              Invite loved ones to leave messages, stories, and tributes — a space to share the love they felt too.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* About Furever */}
+      <div class="max-w-4xl mx-auto mb-16">
+        <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">
+          Furever: A Place of Love and Remembrance
+        </h2>
+        <p class="text-center text-lg text-gray-600 mb-12">
+          We're more than a platform; we're a community of pet lovers who understand the unbreakable bond between you and your furry friends.
+        </p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center">
+                <HeartIcon class="w-5 h-5 text-rose-600" />
+              </div>
+              <h3 class="text-lg font-medium text-gray-900">Cherish and Celebrate</h3>
+            </div>
+            <p class="text-gray-600">
+              Furever is a place to celebrate the joy your pet brought into your life — their quirks, their love, their legacy.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center">
+                <ShieldCheckIcon class="w-5 h-5 text-rose-600" />
+              </div>
+              <h3 class="text-lg font-medium text-gray-900">Safe and Secure</h3>
+            </div>
+            <p class="text-gray-600">
+              Your memories are private and protected, ensuring a lifetime of comfort when you revisit them.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Feature Request */}
+      <div class="max-w-3xl mx-auto mb-16 text-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          Help Us Build Something Beautiful Together
+        </h2>
+        <p class="text-lg text-gray-600 mb-8">
+          Your voice matters. At Furever, we're actively developing new features to make your experience even better. Have ideas, suggestions, or feedback? Let us know below — your thoughts guide us as we grow.
+        </p>
+        <button class="inline-flex px-6 py-3 text-sm font-medium text-rose-600 border border-rose-200 rounded-lg hover:bg-rose-50 transition-colors">
+          Share Your Thoughts
+        </button>
+      </div>
+
+      {/* CTA Section */}
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          Celebrate Your Pet's Legacy Today
+        </h2>
+        <p class="text-lg text-gray-600 mb-8">
+          Your pet's love was timeless, and their story deserves to be told. Start for free or unlock the full potential of Furever with the Premium plan.
+        </p>
+        <div class="flex items-center justify-center gap-4">
+          <button class="px-6 py-3 text-sm font-medium text-rose-600 border border-rose-200 rounded-lg hover:bg-rose-50 transition-colors">
+            Start for Free
+          </button>
+          <button class="px-6 py-3 text-sm font-medium text-white bg-rose-600 rounded-lg hover:bg-rose-700 transition-colors">
+            Upgrade to Premium
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout> 

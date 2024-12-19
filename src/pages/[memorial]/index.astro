@@ -1,0 +1,94 @@
+---
+// This is your main memorial page
+import { memorialData } from '../../data/memorialData';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return memorialData;
+}
+
+const { memorial } = Astro.params;
+const memorialInfo = Astro.props;
+---
+
+<Layout title={`Pet Memory - ${memorialInfo.name}`}>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Previous hero content remains the same -->
+
+    {/* Tab Navigation */}
+    <div class="bg-white rounded-xl shadow-lg mb-8">
+      <nav class="flex border-b" id="nav-tabs">
+        <a 
+          href={`/${memorial}`}
+          class:list={[
+            "flex-1 px-6 py-4 text-center hover:bg-gray-50 transition-colors",
+            Astro.url.pathname === `/${memorial}` ? "text-primary-600 border-b-2 border-primary-600" : "text-gray-600"
+          ]}
+        >
+          <span class="text-xl">📅</span> Timeline
+        </a>
+        <a 
+          href={`/${memorial}/guestbook`}
+          class:list={[
+            "flex-1 px-6 py-4 text-center hover:bg-gray-50 transition-colors",
+            Astro.url.pathname.includes('guestbook') ? "text-primary-600 border-b-2 border-primary-600" : "text-gray-600"
+          ]}
+        >
+          <span class="text-xl">📝</span> Guestbook
+        </a>
+        <a 
+          href={`/${memorial}/share`}
+          class:list={[
+            "flex-1 px-6 py-4 text-center hover:bg-gray-50 transition-colors",
+            Astro.url.pathname.includes('share') ? "text-primary-600 border-b-2 border-primary-600" : "text-gray-600"
+          ]}
+        >
+          <span class="text-xl">💝</span> Share
+        </a>
+      </nav>
+    </div>
+
+    {/* Main Content Area */}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Left Content */}
+      <div class="lg:col-span-2">
+        <!-- Timeline content -->
+      </div>
+
+      {/* Right Sidebar - Memory Stats */}
+      <div class="space-y-6">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <span>✨</span> Memory Stats
+          </h3>
+          
+          <div class="space-y-4">
+            <a 
+              href={`/${memorial}`}
+              class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span>Memories Shared</span>
+              <span class="font-semibold">{memorialInfo.stats.memories}</span>
+            </a>
+
+            <a 
+              href={`/${memorial}`}
+              class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span>Photo Albums</span>
+              <span class="font-semibold">{memorialInfo.stats.albums}</span>
+            </a>
+
+            <a 
+              href={`/${memorial}/guestbook`}
+              class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span>Guest Messages</span>
+              <span class="font-semibold">{memorialInfo.stats.messages}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout> 

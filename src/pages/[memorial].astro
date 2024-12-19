@@ -1,0 +1,237 @@
+---
+import { memorialData } from '../data/memorialData';
+import Layout from '../layouts/Layout.astro';
+import GuestBook from '../components/GuestBook.astro';
+import ShareFeature from '../components/ShareFeature.astro';
+
+export function getStaticPaths() {
+  return memorialData;
+}
+
+const { memorial } = Astro.params;
+const memorialInfo = Astro.props;
+const currentTab = Astro.url.searchParams.get('tab') || 'timeline';
+---
+
+<Layout title={`Pet Memory - ${memorialInfo.name}`}>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    {/* Hero Section */}
+    <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+      <div class="flex flex-col md:flex-row gap-8">
+        {/* Photo Section */}
+        <div class="relative">
+          <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-primary-100">
+            <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+              {memorialInfo.photo ? (
+                <img 
+                  src={memorialInfo.photo} 
+                  alt={memorialInfo.name}
+                  class="w-full h-full object-cover"
+                />
+              ) : (
+                <span class="text-gray-400">Photo</span>
+              )}
+            </div>
+          </div>
+          
+          <button 
+            class="absolute bottom-2 right-2 p-2 bg-white rounded-full shadow-lg hover:bg-gray-50 transition-colors border border-gray-200 group"
+            aria-label="Edit profile photo"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 group-hover:text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Info Section */}
+        <div class="flex-1">
+          <div class="text-center md:text-left">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">{memorialInfo.name}</h1>
+            <p class="text-lg text-gray-600 mb-4">{memorialInfo.breed} • {memorialInfo.years}</p>
+            
+            <div class="prose max-w-none text-gray-600 mb-6">
+              <p class="leading-relaxed">{memorialInfo.bio}</p>
+            </div>
+
+            {/* Action Buttons */}
+            <div class="flex flex-wrap gap-4 justify-center md:justify-start items-center">
+              <button class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">
+                Add Memory
+              </button>
+              <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+                Share Page
+              </button>
+              <div class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-300 rounded-lg">
+                <span class="text-sm text-gray-600">Show in Community</span>
+                <button 
+                  id="visibility-toggle" 
+                  class="relative inline-flex items-center h-5 rounded-full w-9 bg-gray-300 transition-colors"
+                >
+                  <span id="toggle-knob" class="inline-block w-3.5 h-3.5 transform translate-x-0.5 bg-white rounded-full transition-transform duration-200 ease-in-out"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Tab Navigation */}
+    <div class="bg-white rounded-xl shadow-lg mb-8">
+      <nav class="flex border-b" id="nav-tabs">
+        <a 
+          href={`/${memorial}?tab=timeline`}
+          class:list={[
+            "flex-1 px-6 py-4 text-center hover:bg-gray-50 transition-colors",
+            currentTab === 'timeline' ? "text-primary-600 border-b-2 border-primary-600" : "text-gray-600"
+          ]}
+        >
+          <span class="text-xl">📅</span> Timeline
+        </a>
+        <a 
+          href={`/${memorial}?tab=guestbook`}
+          class:list={[
+            "flex-1 px-6 py-4 text-center hover:bg-gray-50 transition-colors",
+            currentTab === 'guestbook' ? "text-primary-600 border-b-2 border-primary-600" : "text-gray-600"
+          ]}
+        >
+          <span class="text-xl">📝</span> Guestbook
+        </a>
+        <a 
+          href={`/${memorial}?tab=share`}
+          class:list={[
+            "flex-1 px-6 py-4 text-center hover:bg-gray-50 transition-colors",
+            currentTab === 'share' ? "text-primary-600 border-b-2 border-primary-600" : "text-gray-600"
+          ]}
+        >
+          <span class="text-xl">💝</span> Share
+        </a>
+      </nav>
+    </div>
+
+    {/* Main Content Area */}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Left Content */}
+      <div class="lg:col-span-2">
+        {/* Timeline Section */}
+        <div class={currentTab === 'timeline' ? '' : 'hidden'}>
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3>Timeline Content</h3>
+            <!-- Add your timeline content here -->
+          </div>
+        </div>
+
+        {/* Guestbook Section */}
+        <div class={currentTab === 'guestbook' ? '' : 'hidden'}>
+          <GuestBook 
+            petName={memorialInfo.name}
+            birthDate={memorialInfo.years.split('-')[0].trim()}
+            deathDate={memorialInfo.years.split('-')[1].trim()}
+          />
+        </div>
+
+        {/* Share Section */}
+        <div class={currentTab === 'share' ? '' : 'hidden'}>
+          <ShareFeature 
+            petName={memorialInfo.name}
+            pageUrl={Astro.url.href.split('?')[0]}
+            previewImage={memorialInfo.photo}
+          />
+        </div>
+      </div>
+
+      {/* Right Sidebar - Memory Stats */}
+      <div class="space-y-6">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+            <span>✨</span> Memory Stats
+          </h3>
+          
+          <div class="space-y-4">
+            <a 
+              href={`/${memorial}?tab=timeline`}
+              class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span>Memories Shared</span>
+              <span class="font-semibold">{memorialInfo.stats.memories}</span>
+            </a>
+
+            <a 
+              href={`/${memorial}?tab=timeline`}
+              class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span>Photo Albums</span>
+              <span class="font-semibold">{memorialInfo.stats.albums}</span>
+            </a>
+
+            <a 
+              href={`/${memorial}?tab=guestbook`}
+              class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span>Guest Messages</span>
+              <span class="font-semibold">{memorialInfo.stats.messages}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Handle tab changes without page reload
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabLinks = document.querySelectorAll('#nav-tabs a');
+    
+    tabLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = new URL(link.href);
+        const tab = url.searchParams.get('tab');
+        
+        // Update URL without reload
+        window.history.pushState({}, '', link.href);
+        
+        // Update tab visibility
+        document.querySelectorAll('.lg-col-span-2 > div').forEach(div => {
+          if (div.classList.contains(`${tab}-section`)) {
+            div.classList.remove('hidden');
+          } else {
+            div.classList.add('hidden');
+          }
+        });
+        
+        // Update active tab styling
+        tabLinks.forEach(l => {
+          if (l === link) {
+            l.classList.add('text-primary-600', 'border-b-2', 'border-primary-600');
+            l.classList.remove('text-gray-600');
+          } else {
+            l.classList.remove('text-primary-600', 'border-b-2', 'border-primary-600');
+            l.classList.add('text-gray-600');
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .tab-button {
+    transition: all 0.3s ease;
+  }
+
+  .tab-button.active {
+    border-bottom: 2px solid var(--color-primary-600);
+    color: var(--color-primary-600);
+  }
+
+  .tab-content {
+    transition: opacity 0.3s ease;
+  }
+
+  .stat-button {
+    cursor: pointer;
+  }
+</style>

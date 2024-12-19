@@ -1,0 +1,120 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-white mt-16">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="col-span-1">
+        <span class="text-xl font-bold text-primary-600">Furever</span>
+        <p class="mt-2 text-sm text-gray-500">
+          Creating lasting tributes for your beloved pets. A place where love and memories live forever.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase">Company</h3>
+        <ul class="mt-4 space-y-4">
+          <li>
+            <a href="/about" data-astro-prefetch class="text-base text-gray-500 hover:text-gray-900">About Us</a>
+          </li>
+          <li>
+            <a href="/contact" data-astro-prefetch class="text-base text-gray-500 hover:text-gray-900">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase">Legal</h3>
+        <ul class="mt-4 space-y-4">
+          <li>
+            <a href="/privacy" data-astro-prefetch="hover" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/terms" data-astro-prefetch="hover" class="text-base text-gray-500 hover:text-gray-900">Terms of Service</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase">Newsletter</h3>
+        <p class="mt-4 text-base text-gray-500">
+          Subscribe to our newsletter for updates and resources.
+        </p>
+        <form id="newsletter-form" class="mt-4 sm:flex">
+          <input
+            type="email"
+            id="newsletter-email"
+            required
+            class="w-full px-4 py-2 text-base rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            placeholder="Enter your email"
+          />
+          <button
+            type="submit"
+            id="newsletter-submit"
+            class="mt-3 w-full px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 sm:mt-0 sm:ml-3 sm:w-auto"
+          >
+            Subscribe
+          </button>
+        </form>
+        <!-- Thank you popup -->
+        <div id="thank-you-popup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div class="bg-white rounded-lg p-8 max-w-md mx-4 relative">
+            <button 
+              class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+              onclick="document.getElementById('thank-you-popup').classList.add('hidden')"
+            >
+              ✕
+            </button>
+            <div class="text-center">
+              <span class="text-5xl mb-4 block">💌</span>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Thank You for Subscribing!</h3>
+              <p class="text-gray-600">
+                Welcome to the Furever family. We'll keep you updated with helpful resources and community news.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-200 pt-8">
+      <p class="text-base text-gray-400 text-center">
+        &copy; {currentYear} Furever. All rights reserved.
+      </p>
+    </div>
+  </div>
+  
+  <script>
+    import { subscribeToNewsletter } from '../lib/newsletter';
+
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
+    const submitButton = document.getElementById('newsletter-submit');
+    const popup = document.getElementById('thank-you-popup');
+
+    if (form && emailInput && submitButton && popup) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        try {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Subscribing...';
+          
+          await subscribeToNewsletter(email);
+          
+          // Show thank you popup
+          popup.classList.remove('hidden');
+          
+          // Reset form
+          form.reset();
+        } catch (error) {
+          console.error('Subscription failed:', error);
+          alert('Failed to subscribe. Please try again later.');
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Subscribe';
+        }
+      });
+    }
+  </script>
+</footer>

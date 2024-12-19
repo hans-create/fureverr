@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { MemorialDetailsForm } from '../../components/memorial/MemorialDetailsForm';
+import { useAuth } from '../../components/auth/AuthContext';
+
+// Redirect if not authenticated
+if (!Astro.cookies.get('session')) {
+  return Astro.redirect('/login?redirect=/create-memorial/details');
+}
+---
+
+<Layout title="Complete Your Memorial">
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-2xl shadow-xl p-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Complete Your Memorial 🌈</h1>
+        <p class="text-xl text-gray-600">Add special memories and details about your beloved friend</p>
+      </div>
+
+      <MemorialDetailsForm client:load />
+    </div>
+  </div>
+</Layout>

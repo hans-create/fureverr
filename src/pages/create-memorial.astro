@@ -1,0 +1,326 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { MemorialForm } from '../components/memorial/MemorialForm';
+---
+
+<Layout title="Create a Memorial">
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-2xl shadow-xl p-8">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Create a Memorial 🌈</h1>
+        <p class="text-xl text-gray-600">Honor your beloved friend with a beautiful tribute</p>
+      </div>
+      
+      <div class="max-w-2xl mx-auto">
+        <div class="mb-8">
+          <div class="bg-white rounded-xl p-6 border border-primary-100">
+            <h2 class="text-2xl font-semibold text-primary-600 mb-4">Profile Photo</h2>
+            <div class="flex flex-col items-center justify-center w-full">
+              <div class="relative mb-4">
+                <label class="flex flex-col items-center justify-center w-48 h-48 rounded-full cursor-pointer overflow-hidden border-2 border-primary-200 hover:border-primary-400 transition-colors relative">
+                  <div class="flex flex-col items-center justify-center w-full h-full bg-primary-50/30">
+                    <svg class="w-8 h-8 mb-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    </svg>
+                    <p class="text-sm text-gray-600">Upload Photo</p>
+                    <p class="text-xs text-gray-500">PNG, JPG</p>
+                  </div>
+                  <input type="file" class="hidden" accept="image/*" />
+                </label>
+              </div>
+              <p class="text-sm text-gray-500 text-center mt-4">
+                Add a beautiful photo of your beloved pet
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="form-group">
+            <label class="block text-gray-600 mb-2">Pet Type</label>
+            <div class="relative">
+              <input 
+                type="text" 
+                id="petTypeSearch"
+                placeholder="Search pet type..."
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-300 focus:ring-1 focus:ring-primary-200 transition-colors text-gray-600"
+              />
+              <div id="petTypeDropdown" class="hidden absolute z-10 w-full mt-1 max-h-48 overflow-y-auto bg-white border border-gray-100 rounded-xl shadow-lg">
+                <div class="p-2 space-y-1">
+                  {/* Common Pets */}
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐕</span> Dog
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐱</span> Cat
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦜</span> Parrot
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦅</span> Rabbit
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐹</span> Hamster
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐠</span> Mouse
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐀</span> Rat
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦔</span> Hedgehog
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦫</span> Fish
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐡</span> Lizard
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐢</span> Turtle
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐴</span> Snake
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐸</span> Frog
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐴</span> Horse
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦄</span> Duck
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐓</span> Chicken
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐷</span> Pig
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐖</span> Goat
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐑</span> Sheep
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦙</span> Llama
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦋</span> Butterfly
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐌</span> Snail
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦊</span> Fox
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🦝</span> Raccoon
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="block text-gray-600 mb-2">Pet's Name</label>
+            <input 
+              type="text" 
+              placeholder="Enter your pet's name"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-300 focus:ring-1 focus:ring-primary-200 transition-colors text-gray-600"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Bio
+            </label>
+            <div class="relative">
+              <textarea 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
+                rows="4"
+                placeholder="Share your pet's story..."
+                maxlength="500"
+              ></textarea>
+              <div class="absolute bottom-2 right-2 text-xs text-gray-500">
+                <span id="charCount">0</span>/500
+              </div>
+            </div>
+            <p class="mt-2 text-sm text-gray-500">
+              Tell us about your pet's personality, favorite activities, and what made them special.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Birth Date
+              </label>
+              <input 
+                type="date"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Rainbow Bridge Date
+              </label>
+              <input 
+                type="date"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
+          </div>
+
+          <div class="pt-6">
+            <button 
+              class="w-full px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+            >
+              Create Memorial
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const imageInput = document.getElementById('imageInput');
+    const preview = document.getElementById('preview');
+    const cropControls = document.getElementById('cropControls');
+    let rotation = 0;
+
+    imageInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          preview.src = e.target.result;
+          preview.classList.remove('hidden');
+          cropControls.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById('rotateLeft').addEventListener('click', () => {
+      rotation = (rotation - 90) % 360;
+      preview.style.transform = `rotate(${rotation}deg)`;
+    });
+
+    document.getElementById('rotateRight').addEventListener('click', () => {
+      rotation = (rotation + 90) % 360;
+      preview.style.transform = `rotate(${rotation}deg)`;
+    });
+
+    document.getElementById('cropButton').addEventListener('click', () => {
+      console.log('Crop requested with rotation:', rotation);
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.querySelector('textarea');
+    const charCount = document.getElementById('charCount');
+
+    if (textarea && charCount) {
+      textarea.addEventListener('input', () => {
+        const count = textarea.value.length;
+        charCount.textContent = count.toString();
+        
+        if (count >= 450) {
+          charCount.classList.add('text-yellow-600');
+        } else if (count >= 500) {
+          charCount.classList.add('text-red-600');
+        } else {
+          charCount.classList.remove('text-yellow-600', 'text-red-600');
+        }
+      });
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('petTypeSearch');
+    const dropdown = document.getElementById('petTypeDropdown');
+    const options = dropdown.querySelectorAll('button');
+
+    // Show dropdown on input focus
+    searchInput.addEventListener('focus', () => {
+      dropdown.classList.remove('hidden');
+    });
+
+    // Filter options as user types
+    searchInput.addEventListener('input', (e) => {
+      const searchText = e.target.value.toLowerCase();
+      options.forEach(option => {
+        const text = option.textContent.toLowerCase();
+        if (text.includes(searchText)) {
+          option.style.display = 'flex';
+        } else {
+          option.style.display = 'none';
+        }
+      });
+    });
+
+    // Handle option selection
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        searchInput.value = option.textContent.trim();
+        dropdown.classList.add('hidden');
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .image-preview {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+    position: relative;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px dashed #e5e7eb;
+  }
+
+  .image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .upload-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9fafb;
+    border-radius: 50%;
+  }
+
+  #preview:not(.hidden) + #placeholder {
+    display: none;
+  }
+</style>

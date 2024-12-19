@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Blog">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Furever Blog</h1>
+      <p class="text-xl text-gray-600">Coming Soon</p>
+    </div>
+
+    <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8 text-center">
+      <div class="mb-6">
+        <span class="text-6xl">✍️</span>
+      </div>
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+        We're Working on Something Special
+      </h2>
+      <p class="text-gray-600 mb-6">
+        Our team is carefully crafting helpful resources, heartwarming stories, and supportive content 
+        for our pet parent community. Check back soon for articles about:
+      </p>
+      <ul class="text-left max-w-md mx-auto space-y-3 text-gray-600">
+        <li class="flex items-center">
+          <span class="text-primary-500 mr-2">•</span>
+          Coping with Pet Loss
+        </li>
+        <li class="flex items-center">
+          <span class="text-primary-500 mr-2">•</span>
+          Creating Meaningful Memorials
+        </li>
+        <li class="flex items-center">
+          <span class="text-primary-500 mr-2">•</span>
+          Understanding the Rainbow Bridge
+        </li>
+        <li class="flex items-center">
+          <span class="text-primary-500 mr-2">•</span>
+          Stories from Our Community
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-12 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-lg p-8">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Subscribe to Our Newsletter</h2>
+        <p class="text-gray-600 mb-6">Be the first to know when we launch our blog and receive helpful resources in your inbox.</p>
+        <form class="max-w-md mx-auto">
+          <div class="flex gap-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="flex-1 px-4 py-2 rounded-md border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+            />
+            <button
+              type="submit"
+              class="px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</Layout>

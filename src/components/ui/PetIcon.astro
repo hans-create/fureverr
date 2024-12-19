@@ -1,0 +1,19 @@
+---
+interface Props {
+  type: 'dog' | 'cat' | 'bird' | 'rabbit' | 'hamster' | 'fish';
+  class?: string;
+}
+
+const { type, class: className } = Astro.props;
+
+const icons = {
+  dog: '🐕',
+  cat: '🐱',
+  bird: '🦜',
+  rabbit: '🐰',
+  hamster: '🐹',
+  fish: '🐠'
+};
+---
+
+<span class={`text-4xl ${className}`}>{icons[type]}</span>

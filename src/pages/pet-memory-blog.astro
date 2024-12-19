@@ -1,0 +1,606 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  PencilSquareIcon,
+  PlusIcon,
+  Squares2X2Icon,
+  Bars3Icon,
+  HeartIcon,
+  ChatBubbleLeftIcon,
+  EllipsisHorizontalIcon
+} from '@heroicons/react/24/outline';
+---
+
+<Layout title="Luna's Memorial">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    {/* Pet Profile Header with Left-Right Layout and Stats */}
+    <div class="mb-8">
+      <div class="flex flex-col lg:flex-row gap-8 items-start">
+        {/* Main Profile Content - Left Side */}
+        <div class="flex flex-col md:flex-row gap-12 flex-grow">
+          {/* Profile Image */}
+          <div class="w-full md:w-1/3 flex justify-center">
+            <div class="relative w-48 h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" 
+                alt="Pet Name" 
+                class="w-full h-full object-cover rounded-full shadow-lg border-4 border-white"
+              />
+              <button class="absolute bottom-2 right-2 p-2 bg-white rounded-full shadow-lg hover:bg-gray-50">
+                <PencilSquareIcon class="w-4 h-4 text-gray-600" />
+              </button>
+            </div>
+          </div>
+
+          {/* Pet Details */}
+          <div class="w-full md:w-2/3 space-y-4">
+            {/* Name and Alias */}
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <h1 class="text-3xl font-bold text-gray-900">Luna</h1>
+                <button class="p-1 hover:bg-gray-100 rounded">
+                  <PencilSquareIcon class="w-4 h-4 text-gray-600" />
+                </button>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-lg text-gray-600">aka: Lulu, Moon Moon</span>
+                <button class="p-1 hover:bg-gray-100 rounded">
+                  <PencilSquareIcon class="w-3 h-3 text-gray-600" />
+                </button>
+              </div>
+            </div>
+
+            {/* Dates */}
+            <div class="flex items-center gap-x-6">
+              <div class="flex items-center gap-2">
+                <span class="text-gray-600">Birth: March 15, 2015</span>
+                <button class="p-1 hover:bg-gray-100 rounded">
+                  <PencilSquareIcon class="w-3 h-3 text-gray-600" />
+                </button>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-gray-600">Death: June 20, 2023</span>
+                <button class="p-1 hover:bg-gray-100 rounded">
+                  <PencilSquareIcon class="w-3 h-3 text-gray-600" />
+                </button>
+              </div>
+            </div>
+
+            {/* Favorite Toy */}
+            <div class="flex items-center gap-2">
+              <span class="text-gray-600">Favorite toy: Mr. Squeaky, the blue elephant</span>
+              <button class="p-1 hover:bg-gray-100 rounded">
+                <PencilSquareIcon class="w-3 h-3 text-gray-600" />
+              </button>
+            </div>
+
+            {/* Fun Facts / What They Like */}
+            <div class="flex items-start gap-2">
+              <div class="flex-grow">
+                <ul class="text-gray-600 list-disc list-inside space-y-1">
+                  <li class="flex items-center justify-between">
+                    <span>Loved chasing butterflies in the garden</span>
+                    <button class="p-1 hover:bg-gray-100 rounded">
+                      <PencilSquareIcon class="w-3 h-3 text-gray-600" />
+                    </button>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Could never resist a belly rub</span>
+                    <button class="p-1 hover:bg-gray-100 rounded">
+                      <PencilSquareIcon class="w-3 h-3 text-gray-600" />
+                    </button>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Always excited for car rides</span>
+                    <button class="p-1 hover:bg-gray-100 rounded">
+                      <PencilSquareIcon class="w-3 h-3 text-gray-600" />
+                    </button>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Favorite treat was peanut butter</span>
+                    <button class="p-1 hover:bg-gray-100 rounded">
+                      <PencilSquareIcon class="w-3 h-3 text-gray-600" />
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <button class="p-1 hover:bg-gray-100 rounded mt-1">
+                <PlusIcon class="w-3 h-3 text-gray-600" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Card & Privacy Control - Right Side */}
+        <div class="w-full lg:w-48">
+          {/* Privacy Toggle Switch */}
+          <div class="mb-3 flex justify-end">
+            <label class="inline-flex items-center cursor-pointer">
+              <input 
+                type="checkbox" 
+                class="sr-only peer" 
+                checked
+                data-privacy-toggle
+              >
+              <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+              <span class="ml-2 text-xs font-medium text-gray-600">
+                <span class="peer-checked:hidden">Private</span>
+                <span class="hidden peer-checked:inline">Public</span>
+              </span>
+            </label>
+          </div>
+
+          {/* Combined Stats Card */}
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <div class="text-xl font-bold text-rose-500">127</div>
+              <div class="text-xs font-medium text-gray-500">Memories</div>
+            </div>
+            
+            <div>
+              <div class="text-xl font-bold text-rose-500">45</div>
+              <div class="text-xs font-medium text-gray-500">Tributes</div>
+            </div>
+            
+            <div>
+              <div class="text-xl font-bold text-rose-500">1.2k</div>
+              <div class="text-xs font-medium text-gray-500">Visits</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Tabs Navigation */}
+    <div class="max-w-6xl mx-auto px-4 mb-8">
+      <div class="border-b">
+        <nav class="flex gap-8">
+          <button 
+            class="px-1 py-4 text-primary-600 border-b-2 border-primary-600 font-medium"
+            data-tab="memories"
+          >
+            Memories
+          </button>
+          <button 
+            class="px-1 py-4 text-gray-500 hover:text-gray-700 font-medium"
+            data-tab="guestbook"
+          >
+            Guestbook
+          </button>
+          <button 
+            class="px-1 py-4 text-gray-500 hover:text-gray-700 font-medium"
+            data-tab="share"
+          >
+            Share
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    {/* Content Sections */}
+    <div id="tabContent">
+      {/* Memories Section */}
+      <div id="memories" class="tab-content">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center gap-4">
+              <select class="bg-white px-3 py-1.5 rounded-full text-gray-600 text-sm border">
+                <option>Newest First</option>
+                <option>Oldest First</option>
+              </select>
+
+              {/* View Toggle */}
+              <div class="flex items-center bg-gray-100 rounded-full p-1">
+                <button 
+                  class="p-1.5 rounded-full text-gray-600 hover:text-primary-600 view-toggle active"
+                  data-view="grid"
+                >
+                  <Squares2X2Icon class="w-4 h-4" />
+                </button>
+                <button 
+                  class="p-1.5 rounded-full text-gray-600 hover:text-primary-600 view-toggle"
+                  data-view="list"
+                >
+                  <Bars3Icon class="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+            
+            <button 
+              class="flex items-center gap-1.5 bg-primary-600 text-white px-3 py-1.5 rounded-full text-sm hover:bg-primary-700 transition-colors"
+            >
+              <PlusIcon class="w-4 h-4" />
+              <span>Add Memory</span>
+            </button>
+          </div>
+
+          {/* Grid View */}
+          <div class="grid-view">
+            <div class="grid grid-cols-2 gap-6">
+              {/* Memory Card 1 */}
+              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                <div class="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" 
+                    alt="Memory" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-medium text-gray-900 mb-1">First Day at the Park</h3>
+                  <p class="text-sm text-gray-500 mb-2">March 15, 2023</p>
+                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">Her first time seeing butterflies in the garden. She couldn't contain her excitement!</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                      <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
+                        <HeartIcon class="w-4 h-4" />
+                        <span class="text-sm">24</span>
+                      </button>
+                      <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
+                        <ChatBubbleLeftIcon class="w-4 h-4" />
+                        <span class="text-sm">12</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Memory Card 2 */}
+              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                <div class="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e" 
+                    alt="Memory" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-medium text-gray-900 mb-1">Beach Day Adventure</h3>
+                  <p class="text-sm text-gray-500 mb-2">July 4, 2023</p>
+                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">Luna's first time at the beach. She loved chasing the waves and digging in the sand!</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                      <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
+                        <HeartIcon class="w-4 h-4" />
+                        <span class="text-sm">18</span>
+                      </button>
+                      <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
+                        <ChatBubbleLeftIcon class="w-4 h-4" />
+                        <span class="text-sm">8</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Memory Card 3 */}
+              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                <div class="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" 
+                    alt="Memory" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-medium text-gray-900 mb-1">Birthday Celebration</h3>
+                  <p class="text-sm text-gray-500 mb-2">June 22, 2023</p>
+                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">Luna's special day! She got her favorite treats and a new toy.</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                      <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
+                        <HeartIcon class="w-4 h-4" />
+                        <span class="text-sm">32</span>
+                      </button>
+                      <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
+                        <ChatBubbleLeftIcon class="w-4 h-4" />
+                        <span class="text-sm">15</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* List View */}
+          <div class="list-view hidden space-y-4">
+            {/* List View Memory 1 */}
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <div class="flex">
+                <div class="w-48 shrink-0">
+                  <div class="aspect-[4/3] overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" 
+                      alt="Memory" 
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div class="flex-1 p-4">
+                  <h3 class="text-lg font-medium text-gray-900 mb-1">First Day at the Park</h3>
+                  <p class="text-sm text-gray-500 mb-2">March 15, 2023</p>
+                  <p class="text-gray-600 text-sm mb-4">Her first time seeing butterflies in the garden. She couldn't contain her excitement!</p>
+                  <div class="flex items-center gap-4">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
+                      <HeartIcon class="w-4 h-4" />
+                      <span class="text-sm">24</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
+                      <ChatBubbleLeftIcon class="w-4 h-4" />
+                      <span class="text-sm">12</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Add more list view items here */}
+          </div>
+        </div>
+      </div>
+
+      {/* Guestbook Section - Also Centered */}
+      <div id="guestbook" class="tab-content hidden">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="flex justify-between items-center mb-8">
+            <h2 class="text-xl font-medium text-gray-900">Messages & Tributes</h2>
+            <button 
+              class="flex items-center gap-1.5 bg-primary-600 text-white px-3 py-1.5 rounded-full text-sm hover:bg-primary-700 transition-colors"
+            >
+              <PlusIcon class="w-4 h-4" />
+              <span>Write Tribute</span>
+            </button>
+          </div>
+
+          <div class="space-y-6">
+            {/* Tribute Card */}
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
+              <div class="flex items-start gap-4">
+                <img 
+                  src="/default-avatar.jpg" 
+                  alt="User Avatar" 
+                  class="w-10 h-10 rounded-full"
+                />
+                <div class="flex-1">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <h3 class="font-medium text-gray-900">Sarah Johnson</h3>
+                      <p class="text-sm text-gray-500">2 days ago</p>
+                    </div>
+                    <button class="text-gray-400 hover:text-gray-600">
+                      <EllipsisHorizontalIcon class="w-5 h-5" />
+                    </button>
+                  </div>
+                  <p class="mt-2 text-gray-600">Luna was such a joy to be around. I'll never forget her playful spirit and how she always greeted everyone with such enthusiasm.</p>
+                  <div class="mt-4 flex items-center gap-4">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
+                      <HeartIcon class="w-5 h-5" />
+                      <span class="text-sm">24</span>
+                    </button>
+                    <button class="text-sm text-gray-500 hover:text-gray-700">Reply</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Share Section - Also Centered */}
+      <div id="share" class="tab-content hidden">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="bg-white rounded-2xl p-8 shadow-sm">
+            <h2 class="text-xl font-medium text-gray-900 mb-6">Share This Memorial</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+              {/* QR Code */}
+              <div class="text-center">
+                <div class="bg-gray-100 p-6 rounded-xl inline-block mb-4">
+                  <img src="/qr-code.png" alt="QR Code" class="w-40 h-40" />
+                </div>
+                <button class="text-primary-600 hover:text-primary-700 font-medium">
+                  Download QR Code
+                </button>
+              </div>
+
+              {/* Share Link */}
+              <div class="flex flex-col justify-center">
+                <p class="text-sm text-gray-600 mb-2">Memorial Link</p>
+                <div class="flex gap-2">
+                  <input 
+                    type="text" 
+                    value="https://memorial.com/luna" 
+                    class="flex-1 px-4 py-2 border rounded-lg bg-gray-50"
+                    readonly
+                  />
+                  <button class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700">
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Tab Switching Logic
+  const tabs = document.querySelectorAll('[data-tab]');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active states
+      tabs.forEach(t => {
+        t.classList.remove('text-primary-600', 'border-b-2', 'border-primary-600');
+        t.classList.add('text-gray-500');
+      });
+      
+      // Add active state to clicked tab
+      tab.classList.add('text-primary-600', 'border-b-2', 'border-primary-600');
+      tab.classList.remove('text-gray-500');
+      
+      // Show correct content
+      const tabId = tab.dataset.tab;
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.getElementById(tabId)?.classList.remove('hidden');
+    });
+  });
+
+  // Copy Link Functionality
+  const copyBtn = document.querySelector('button:contains("Copy")');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const input = copyBtn.previousElementSibling;
+      input.select();
+      document.execCommand('copy');
+      
+      // Show feedback
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        copyBtn.textContent = 'Copy';
+      }, 2000);
+    });
+  }
+
+  // Privacy Toggle Logic
+  const privacyToggle = document.querySelector('[data-privacy-toggle]');
+  if (privacyToggle) {
+    privacyToggle.addEventListener('click', () => {
+      const isPublic = privacyToggle.getAttribute('data-is-public') === 'true';
+      const newState = !isPublic;
+      
+      // Update the text and styling
+      const toggleText = privacyToggle.querySelector('span');
+      if (toggleText) {
+        toggleText.textContent = newState ? 'Public' : 'Private';
+        
+        // Optional: Update colors/styling based on state
+        if (newState) {
+          toggleText.classList.remove('text-gray-600');
+          toggleText.classList.add('text-primary-600');
+        } else {
+          toggleText.classList.remove('text-primary-600');
+          toggleText.classList.add('text-gray-600');
+        }
+      }
+      
+      privacyToggle.setAttribute('data-is-public', newState);
+    });
+  }
+
+  // Toggle Comments Section
+  document.querySelectorAll('.memory-card').forEach(card => {
+    const commentBtn = card.querySelector('[data-comment-btn]');
+    const commentsSection = card.querySelector('.comments-section');
+    
+    if (commentBtn && commentsSection) {
+      commentBtn.addEventListener('click', () => {
+        commentsSection.classList.toggle('hidden');
+      });
+    }
+  });
+
+  // Like Functionality
+  document.querySelectorAll('[data-like-btn]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const countSpan = btn.querySelector('span');
+      const currentCount = parseInt(countSpan.textContent);
+      const isLiked = btn.classList.contains('text-rose-500');
+      
+      btn.classList.toggle('text-rose-500');
+      countSpan.textContent = isLiked ? currentCount - 1 : currentCount + 1;
+    });
+  });
+
+  // Comment Post Handler
+  document.querySelectorAll('.comment-form').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input');
+      if (input.value.trim()) {
+        // Here you would typically send the comment to your server
+        console.log('New comment:', input.value);
+        input.value = '';
+      }
+    });
+  });
+
+  // Modal Controls
+  const modal = document.getElementById('memoryModal');
+  const addMemoryBtn = document.getElementById('addMemoryBtn');
+  const closeModal = document.getElementById('closeModal');
+
+  if (addMemoryBtn && modal && closeModal) {
+    // Show modal
+    addMemoryBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Hide modal
+    closeModal.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  }
+
+  // Image Upload Preview
+  const fileInput = document.querySelector('input[type="file"]');
+  const browseButton = document.querySelector('button[type="button"]');
+
+  if (fileInput && browseButton) {
+    browseButton.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      // Here you would typically handle the file preview
+      console.log('Files selected:', e.target.files);
+    });
+  }
+
+  // View Toggle Logic
+  const viewToggles = document.querySelectorAll('.view-toggle');
+  const gridView = document.querySelector('.grid-view');
+  const listView = document.querySelector('.list-view');
+
+  viewToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      // Update toggle buttons
+      viewToggles.forEach(t => t.classList.remove('bg-white', 'text-primary-600'));
+      toggle.classList.add('bg-white', 'text-primary-600');
+
+      // Show correct view
+      const view = toggle.dataset.view;
+      if (view === 'grid') {
+        gridView?.classList.remove('hidden');
+        listView?.classList.add('hidden');
+      } else {
+        gridView?.classList.add('hidden');
+        listView?.classList.remove('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .view-toggle.active {
+    @apply bg-white text-primary-600;
+  }
+</style>
+</rewritten_file> 

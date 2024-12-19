@@ -1,0 +1,137 @@
+---
+import '@fontsource/quicksand';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import 'aos/dist/aos.css';
+import { fade } from 'astro:transitions';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Create a lasting tribute for your beloved pet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Furever</title>
+    <meta name="view-transition" content="same-origin" />
+    <script>
+      // Disable transitions during page load
+      document.documentElement.classList.add('no-transitions');
+      window.addEventListener('load', () => {
+        document.documentElement.classList.remove('no-transitions');
+      });
+    </script>
+    <style>
+      /* Disable transitions during page load */
+      .no-transitions * {
+        transition: none !important;
+      }
+      
+      /* Smooth page transitions */
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 0.2s;
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      /* Fixed navigation */
+      nav {
+        view-transition-name: none;
+      }
+      
+      /* Prevent FOUC during transitions */
+      .fade-in {
+        animation: fadeIn 0.3s ease-out;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gray-50">
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <div class="pet-element text-3xl" style="top: 10%; left: 5%;">🐾</div>
+      <div class="pet-element text-3xl" style="top: 30%; left: 80%;">🦴</div>
+      <div class="pet-element text-3xl" style="top: 50%; left: 20%;">🐱</div>
+      <div class="pet-element text-3xl" style="top: 70%; left: 60%;">🐕</div>
+      <div class="pet-element text-3xl" style="top: 85%; left: 40%;">🐟</div>
+      <div class="pet-element text-3xl" style="top: 25%; left: 90%;">🐰</div>
+      <div class="pet-element text-3xl" style="top: 65%; left: 10%;">🦜</div>
+      <div class="pet-element text-3xl" style="top: 45%; left: 70%;">🐹</div>
+    </div>
+
+    <main class="rainbow-bg min-h-screen">
+      <Navigation />
+      <main class="pt-16" transition:animate={fade({ duration: '0.2s' })}>
+        <slot />
+      </main>
+      <Footer transition:persist />
+    </main>
+    <script>
+      import AOS from 'aos';
+      
+      // Initialize AOS only once
+      if (typeof window !== 'undefined') {
+        AOS.init({
+          duration: 600,
+          once: true,
+          offset: 100,
+          disable: window.matchMedia('(max-width: 768px)')
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .rainbow-bg {
+    position: relative;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 183, 197, 0.15),  /* Soft pink */
+      rgba(255, 218, 185, 0.15),  /* Peach */
+      rgba(255, 255, 186, 0.15),  /* Light yellow */
+      rgba(201, 255, 191, 0.15),  /* Mint green */
+      rgba(191, 228, 255, 0.15),  /* Light blue */
+      rgba(223, 191, 255, 0.15)   /* Lavender */
+    );
+  }
+
+  .pet-element {
+    position: absolute;
+    opacity: 0.2;
+    animation: float 30s infinite linear;
+    pointer-events: none;
+  }
+
+  .pet-element:nth-child(odd) {
+    animation-duration: 35s;
+    animation-direction: reverse;
+  }
+
+  .pet-element:nth-child(3n) {
+    animation-duration: 40s;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate(50vw, 20vh) rotate(180deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+</style>
