@@ -6,16 +6,76 @@ import heroImage from '../components/memorial/public/images/hero-cat-sleeping.pn
 import { HeartIcon, LockClosedIcon, CameraIcon, UserGroupIcon, SparklesIcon, PhotoIcon, EnvelopeIcon, BookmarkIcon } from '@heroicons/react/24/outline';
 
 const memorials = [
-  { name: 'Max', type: 'dog', tribute_count: 24, dateOfBirth: '2010-03-15', dateOfPassing: '2023-11-20', image: 'https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=800' },
-  { name: 'Luna', type: 'cat', tribute_count: 18, dateOfBirth: '2012-06-22', dateOfPassing: '2023-12-05', image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800' },
-  { name: 'Charlie', type: 'bird', tribute_count: 12, dateOfBirth: '2015-09-10', dateOfPassing: '2023-10-15', image: 'https://images.unsplash.com/photo-1452570053594-1b985d6ea890?auto=format&fit=crop&w=800' },
-  { name: 'Bella', type: 'dog', tribute_count: 21, dateOfBirth: '2011-04-30', dateOfPassing: '2023-09-28', image: 'https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?auto=format&fit=crop&w=800' },
-  { name: 'Oliver', type: 'cat', tribute_count: 15, dateOfBirth: '2014-07-12', dateOfPassing: '2023-11-30', image: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800' },
-  { name: 'Rocky', type: 'dog', tribute_count: 19, dateOfBirth: '2013-02-28', dateOfPassing: '2023-10-22', image: 'https://images.unsplash.com/photo-1534361960057-19889db9621e?auto=format&fit=crop&w=800' },
-  { name: 'Milo', type: 'rabbit', tribute_count: 14, dateOfBirth: '2018-05-15', dateOfPassing: '2023-12-10', image: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=800' },
-  { name: 'Coco', type: 'dog', tribute_count: 22, dateOfBirth: '2012-11-03', dateOfPassing: '2023-11-15', image: 'https://images.unsplash.com/photo-1534551767192-78b8dd45b51b?auto=format&fit=crop&w=800' },
-  { name: 'Lucy', type: 'cat', tribute_count: 16, dateOfBirth: '2015-08-20', dateOfPassing: '2023-12-01', image: 'https://images.unsplash.com/photo-1548546738-8509cb246ed3?auto=format&fit=crop&w=800' },
-  { name: 'Bailey', type: 'dog', tribute_count: 20, dateOfBirth: '2014-01-25', dateOfPassing: '2023-10-30', image: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=800' }
+  {
+    name: "Luna",
+    image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2015-03-15",
+    dateOfPassing: "2023-06-20",
+    tribute_count: 124
+  },
+  {
+    name: "Ziggy",
+    image: "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2020-07-22",
+    dateOfPassing: "2023-08-15",
+    tribute_count: 98
+  },
+  {
+    name: "Thumper",
+    image: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2018-01-10",
+    dateOfPassing: "2023-09-05",
+    tribute_count: 156
+  },
+  {
+    name: "Charlie",
+    image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2016-05-12",
+    dateOfPassing: "2023-07-18",
+    tribute_count: 143
+  },
+  {
+    name: "Spike",
+    image: "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2017-09-28",
+    dateOfPassing: "2023-05-30",
+    tribute_count: 167
+  },
+  {
+    name: "Bubbles",
+    image: "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2019-02-14",
+    dateOfPassing: "2023-08-25",
+    tribute_count: 89
+  },
+  {
+    name: "Rainbow",
+    image: "https://images.unsplash.com/photo-1520808663317-647b476a81b9?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2015-12-03",
+    dateOfPassing: "2023-04-15",
+    tribute_count: 212
+  },
+  {
+    name: "Sheldon",
+    image: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2014-08-21",
+    dateOfPassing: "2023-06-10",
+    tribute_count: 178
+  },
+  {
+    name: "Pip",
+    image: "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2016-11-07",
+    dateOfPassing: "2023-09-01",
+    tribute_count: 145
+  },
+  {
+    name: "Scales",
+    image: "https://images.unsplash.com/photo-1581900059161-5c5be205a2f4?auto=format&fit=crop&w=800&q=80",
+    dateOfBirth: "2017-04-30",
+    dateOfPassing: "2023-07-28",
+    tribute_count: 134
+  }
 ];
 ---
 
@@ -24,9 +84,9 @@ const memorials = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
       
       {/* Hero Section */}
-      <section class="relative min-h-[80vh] rainbow-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(80vh-64px)]">
+      <section class="relative min-h-[70vh] -mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 translate-x-4 lg:translate-x-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(70vh-64px)]">
             <div>
               <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
                 Where Memories Find a Home
@@ -36,7 +96,7 @@ const memorials = [
               </p>
               <div class="flex gap-4">
                 <a href="/create-memorial" class="px-8 py-4 bg-primary-600 text-white rounded-full text-lg font-semibold hover:bg-primary-700 transform hover:scale-105 transition-all flex items-center gap-2">
-                  Create a Memorial <HeartIcon class="w-4 h-4" />
+                  Create Memorial <HeartIcon class="w-4 h-4" />
                 </a>
                 <a href="/community" class="px-8 py-4 bg-white text-primary-600 rounded-full text-lg font-semibold hover:bg-primary-50 transform hover:scale-105 transition-all flex items-center gap-2">
                   Explore Memorials <UserGroupIcon class="w-4 h-4" />
@@ -56,58 +116,58 @@ const memorials = [
       </section>
 
       {/* Ways to Honor Section */}
-      <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Ways to Honor Your Pet's Memory</h2>
+      <section class="py-32 bg-white bg-opacity-0">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div class="text-center mb-20">
+            <h2 class="text-5xl font-bold text-gray-900 mb-6">Ways to Honor Your Pet's Memory</h2>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div class="bg-primary-50 p-8 rounded-2xl">
+            <div class="bg-primary-50 p-8 rounded-3xl hover:scale-105 transition-transform shadow-md">
               <div class="flex items-center mb-4">
-                <div class="w-4 h-4 mr-4">
-                  <LockClosedIcon class="w-4 h-4 text-primary-600" />
+                <div class="w-10 h-10 mr-4 bg-primary-100 rounded-full flex items-center justify-center">
+                  <LockClosedIcon class="w-5 h-5 text-primary-600" />
                 </div>
-                <h3 class="text-xl font-bold text-gray-900">Safe and Private</h3>
+                <h3 class="text-2xl font-bold text-gray-900">Safe and Private</h3>
               </div>
-              <p class="text-gray-600">Your memories are protected and secure.</p>
+              <p class="text-gray-600 text-lg pl-14">Your memories are protected and secure.</p>
             </div>
             
-            <div class="bg-primary-50 p-8 rounded-2xl">
+            <div class="bg-primary-50 p-8 rounded-3xl hover:scale-105 transition-transform shadow-md">
               <div class="flex items-center mb-4">
-                <div class="w-4 h-4 mr-4">
-                  <CameraIcon class="w-4 h-4 text-primary-600" />
+                <div class="w-10 h-10 mr-4 bg-primary-100 rounded-full flex items-center justify-center">
+                  <CameraIcon class="w-5 h-5 text-primary-600" />
                 </div>
-                <h3 class="text-xl font-bold text-gray-900">Preserve Every Moment</h3>
+                <h3 class="text-2xl font-bold text-gray-900">Preserve Every Moment</h3>
               </div>
-              <p class="text-gray-600">Upload photos, videos, and stories to create a timeless tribute.</p>
+              <p class="text-gray-600 text-lg pl-14">Upload photos, videos, and stories to create a timeless tribute.</p>
             </div>
             
-            <div class="bg-primary-50 p-8 rounded-2xl">
+            <div class="bg-primary-50 p-8 rounded-3xl hover:scale-105 transition-transform shadow-md">
               <div class="flex items-center mb-4">
-                <div class="w-4 h-4 mr-4">
-                  <UserGroupIcon class="w-4 h-4 text-primary-600" />
+                <div class="w-10 h-10 mr-4 bg-primary-100 rounded-full flex items-center justify-center">
+                  <UserGroupIcon class="w-5 h-5 text-primary-600" />
                 </div>
-                <h3 class="text-xl font-bold text-gray-900">A Supportive Community</h3>
+                <h3 class="text-2xl font-bold text-gray-900">A Supportive Community</h3>
               </div>
-              <p class="text-gray-600">Share your memories and connect with others who understand.</p>
+              <p class="text-gray-600 text-lg pl-14">Share your memories and connect with others who understand.</p>
             </div>
             
-            <div class="bg-primary-50 p-8 rounded-2xl">
+            <div class="bg-primary-50 p-8 rounded-3xl hover:scale-105 transition-transform shadow-md">
               <div class="flex items-center mb-4">
-                <div class="w-4 h-4 mr-4">
-                  <BookmarkIcon class="w-4 h-4 text-primary-600" />
+                <div class="w-10 h-10 mr-4 bg-primary-100 rounded-full flex items-center justify-center">
+                  <BookmarkIcon class="w-5 h-5 text-primary-600" />
                 </div>
-                <h3 class="text-xl font-bold text-gray-900">Accessible and Lasting</h3>
+                <h3 class="text-2xl font-bold text-gray-900">Accessible and Lasting</h3>
               </div>
-              <p class="text-gray-600">Reflect, update, and share your pet's memorial anytime.</p>
+              <p class="text-gray-600 text-lg pl-14">Reflect, update, and share your pet's memorial anytime.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* How to Log Your Memories Section */}
-      <section class="py-20 bg-gray-50">
+      <section class="py-20 bg-gray-50 bg-opacity-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-16">
             <h2 class="text-4xl font-bold text-gray-900 mb-4">How to Log Your Memories</h2>
@@ -143,60 +203,62 @@ const memorials = [
       </section>
 
       {/* Featured Memorials Section */}
-      <section class="py-20 bg-white">
+      <section class="py-20 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
               Featured Memorials <div class="w-4 h-4 inline-flex items-center ml-2">
                 <HeartIcon class="w-3 h-3" />
               </div>
             </h2>
-            <p class="text-xl text-gray-600" data-aos="fade-up" data-aos-delay="100">Discover touching tributes from our community</p>
+            <p class="text-xl text-gray-600">Discover touching tributes from our community</p>
           </div>
 
-          <div class="relative overflow-hidden">
-            <div class="memorial-scroll flex gap-8 py-4">
-              {[...memorials, ...memorials].map((memorial, index) => (
-                <div 
-                  class="flex-none w-[300px]"
-                  data-aos="fade-up" 
-                  data-aos-delay={100 * (index % memorials.length)}
-                >
-                  <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative h-48">
-                      <img 
-                        src={memorial.image} 
-                        alt={memorial.name} 
-                        class="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div class="p-4">
-                      <h3 class="text-xl font-semibold text-gray-900">{memorial.name}</h3>
-                      <div class="mt-2 space-y-1">
-                        <p class="text-sm text-gray-600">
-                          Born: {new Date(memorial.dateOfBirth).toLocaleDateString()}
-                        </p>
-                        <p class="text-sm text-gray-600">
-                          Passed: {new Date(memorial.dateOfPassing).toLocaleDateString()}
-                        </p>
+          <div class="relative">
+            <div class="memorial-scroll">
+              <div class="flex gap-8 py-4 animate-scroll">
+                {[...memorials].map((memorial, index) => (
+                  <div class="flex-none w-[300px]">
+                    <div class="memorial-card bg-gradient-to-br from-[#f9f6f2]/60 to-[#f0e9e0]/50 
+                                rounded-2xl shadow-md overflow-hidden 
+                                hover:shadow-lg transition-all duration-300 
+                                border border-[#e8e1d7]/20">
+                      <div class="relative h-48 overflow-hidden">
+                        <img 
+                          src={memorial.image} 
+                          alt={memorial.name} 
+                          class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#f9f6f2]/20 to-transparent"></div>
                       </div>
-                      <div class="mt-3 flex items-center text-gray-600">
-                        <div class="w-4 h-4 flex items-center">
-                          <HeartIcon class="w-3 h-3" />
+                      <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">{memorial.name}</h3>
+                        <div class="mt-2 space-y-1">
+                          <p class="text-sm text-gray-600">
+                            Born: {new Date(memorial.dateOfBirth).toLocaleDateString()}
+                          </p>
+                          <p class="text-sm text-gray-600">
+                            Passed: {new Date(memorial.dateOfPassing).toLocaleDateString()}
+                          </p>
                         </div>
-                        <span class="text-sm ml-1">{memorial.tribute_count} tributes</span>
+                        <div class="mt-3 flex items-center text-[#b4a99d]">
+                          <div class="w-4 h-4 flex items-center">
+                            <HeartIcon class="w-3 h-3" />
+                          </div>
+                          <span class="text-sm ml-1">{memorial.tribute_count} tributes</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <div class="bg-white rounded-3xl shadow-lg p-8 transition-transform transform hover:scale-105">
+      <div class="bg-white rounded-3xl shadow-lg p-8 transition-transform transform hover:scale-105 bg-opacity-0">
         <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">
           What Our Users Say
         </h2>
@@ -225,7 +287,7 @@ const memorials = [
       </div>
 
       {/* Closing CTA Section */}
-      <section class="py-20 rainbow-bg relative overflow-hidden">
+      <section class="py-20">
         <div class="floating-pets absolute inset-0 pointer-events-none opacity-50">
           <div class="pet-element" style="top: 20%; left: 10%;">🐾</div>
           <div class="pet-element" style="top: 40%; left: 85%;">🐱</div>
@@ -252,7 +314,18 @@ const memorials = [
 </Layout>
 <style>
   .memorial-scroll {
-    animation: scroll 60s linear infinite;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+    width: max-content;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
   }
 
   @keyframes scroll {
@@ -260,12 +333,26 @@ const memorials = [
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(calc(-300px * 3 - 2rem * 3)); /* Width of 3 cards + gaps */
     }
   }
 
-  .memorial-scroll:hover {
-    animation-play-state: paused;
+  .memorial-card {
+    transition: all 0.3s ease;
+  }
+
+  .memorial-card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Hide scrollbar */
+  .memorial-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .memorial-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   /* Add rainbow gradient background with low opacity */
@@ -317,3 +404,4 @@ const memorials = [
     backdrop-filter: blur(8px);
   }
 </style>
+
