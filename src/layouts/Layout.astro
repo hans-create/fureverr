@@ -92,9 +92,31 @@ const { title } = Astro.props;
         });
       }
     </script>
+    <script>
+      // Disable browser's default scroll restoration
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+      }
+
+      // Multiple event listeners to ensure top scroll
+      document.addEventListener('astro:before-swap', () => {
+        window.scrollTo(0, 0);
+      });
+
+      document.addEventListener('astro:after-swap', () => {
+        window.scrollTo(0, 0);
+      });
+
+      // Backup for regular page loads
+      window.onload = () => {
+        window.scrollTo(0, 0);
+      }
+
+      // Immediate scroll to top
+      window.scrollTo(0, 0);
+    </script>
   </body>
 </html>
-
 <style>
   .rainbow-bg {
     position: relative;

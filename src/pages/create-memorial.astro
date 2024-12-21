@@ -1,13 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { MemorialForm } from '../components/memorial/MemorialForm';
+import { ImageUploader } from '../components/memorial/ImageUploader';
 ---
 
 <Layout title="Create a Memorial">
   <div class="max-w-4xl mx-auto px-4 py-12">
-    <div class="bg-white rounded-2xl shadow-xl p-8">
+    <div class="bg-gray-50/60 rounded-2xl shadow-md p-8 border border-gray-100/50">
       <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Create a Memorial 🌈</h1>
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Create a Memorial</h1>
         <p class="text-xl text-gray-600">Honor your beloved friend with a beautiful tribute</p>
       </div>
       
@@ -17,16 +18,7 @@ import { MemorialForm } from '../components/memorial/MemorialForm';
             <h2 class="text-2xl font-semibold text-primary-600 mb-4">Profile Photo</h2>
             <div class="flex flex-col items-center justify-center w-full">
               <div class="relative mb-4">
-                <label class="flex flex-col items-center justify-center w-48 h-48 rounded-full cursor-pointer overflow-hidden border-2 border-primary-200 hover:border-primary-400 transition-colors relative">
-                  <div class="flex flex-col items-center justify-center w-full h-full bg-primary-50/30">
-                    <svg class="w-8 h-8 mb-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                    </svg>
-                    <p class="text-sm text-gray-600">Upload Photo</p>
-                    <p class="text-xs text-gray-500">PNG, JPG</p>
-                  </div>
-                  <input type="file" class="hidden" accept="image/*" />
-                </label>
+                <ImageUploader client:load />
               </div>
               <p class="text-sm text-gray-500 text-center mt-4">
                 Add a beautiful photo of your beloved pet
@@ -47,7 +39,7 @@ import { MemorialForm } from '../components/memorial/MemorialForm';
               />
               <div id="petTypeDropdown" class="hidden absolute z-10 w-full mt-1 max-h-48 overflow-y-auto bg-white border border-gray-100 rounded-xl shadow-lg">
                 <div class="p-2 space-y-1">
-                  {/* Common Pets */}
+                  {/* Common Pet Types */}
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
                     <span>🐕</span> Dog
                   </button>
@@ -55,70 +47,58 @@ import { MemorialForm } from '../components/memorial/MemorialForm';
                     <span>🐱</span> Cat
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦜</span> Parrot
+                    <span>🐦</span> Bird
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦅</span> Rabbit
+                    <span>🐟</span> Fish
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐇</span> Rabbit
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
                     <span>🐹</span> Hamster
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐠</span> Mouse
-                  </button>
-                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐀</span> Rat
-                  </button>
-                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦔</span> Hedgehog
-                  </button>
-                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦫</span> Fish
-                  </button>
-                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐡</span> Lizard
+                    <span>🐠</span> Parrot
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
                     <span>🐢</span> Turtle
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐴</span> Snake
+                    <span>🐴</span> Lizard
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐸</span> Frog
+                    <span>🐍</span> Snake
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐀</span> Rat
+                  </button>
+                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
+                    <span>🐁</span> Mouse
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
                     <span>🐴</span> Horse
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦄</span> Duck
-                  </button>
-                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐓</span> Chicken
+                    <span>🦄</span> Hedgehog
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
                     <span>🐷</span> Pig
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐖</span> Goat
+                    <span>🐖</span> Duck
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐑</span> Sheep
+                    <span>🐓</span> Chicken
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦙</span> Llama
+                    <span>🦩</span> Flamingo
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦋</span> Butterfly
+                    <span>🦜</span> Macaw
                   </button>
                   <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🐌</span> Snail
-                  </button>
-                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦊</span> Fox
-                  </button>
-                  <button class="w-full px-3 py-2 text-left hover:bg-primary-50 rounded-lg flex items-center gap-2">
-                    <span>🦝</span> Raccoon
+                    <span>🦚</span> Peacock
                   </button>
                 </div>
               </div>
@@ -161,7 +141,10 @@ import { MemorialForm } from '../components/memorial/MemorialForm';
               </label>
               <input 
                 type="date"
+                min="1900-01-01"
+                max={new Date().toISOString().split('T')[0]}
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                required
               />
             </div>
             <div>
@@ -170,7 +153,9 @@ import { MemorialForm } from '../components/memorial/MemorialForm';
               </label>
               <input 
                 type="date"
+                max={new Date().toISOString().split('T')[0]}
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                required
               />
             </div>
           </div>

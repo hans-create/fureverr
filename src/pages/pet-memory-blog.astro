@@ -7,144 +7,179 @@ import {
   Bars3Icon,
   HeartIcon,
   ChatBubbleLeftIcon,
-  EllipsisHorizontalIcon
+  EllipsisHorizontalIcon,
+  EyeIcon,
+  LockClosedIcon,
+  ShareIcon
 } from '@heroicons/react/24/outline';
 ---
 
 <Layout title="Luna's Memorial">
-  <div class="max-w-6xl mx-auto px-4 py-12">
-    {/* Pet Profile Header with Left-Right Layout and Stats */}
-    <div class="mb-8">
-      <div class="flex flex-col lg:flex-row gap-8 items-start">
-        {/* Main Profile Content - Left Side */}
-        <div class="flex flex-col md:flex-row gap-12 flex-grow">
-          {/* Profile Image */}
-          <div class="w-full md:w-1/3 flex justify-center">
-            <div class="relative w-48 h-48">
+  {/* Feature Buttons */}
+  <div class="border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 pt-4 md:pt-8">
+      {/* Mobile Menu Button */}
+      <div class="md:hidden flex justify-end mb-2">
+        <button class="p-2 text-gray-600" id="mobileMenuBtn">☰</button>
+      </div>
+
+      {/* Feature Buttons - Medium size */}
+      <div id="featureButtons" class="hidden md:flex justify-end items-center gap-4">
+        {/* Edit Button */}
+        <div class="relative">
+          <button 
+            class="px-6 py-3 bg-white border border-gray-700 text-gray-800 shadow-sm hover:bg-gray-50 rounded-xl transition-all flex items-center gap-3"
+            data-dropdown-toggle="editDropdown"
+          >
+            <span class="text-lg">✎</span>
+            <span class="text-base font-medium">Edit</span>
+          </button>
+          <div id="editDropdown" data-dropdown class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 hidden border border-gray-200">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">✎ Edit Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">✐ Edit Pet Info</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">✄ Edit Photos</a>
+          </div>
+        </div>
+
+        {/* Preview Button */}
+        <div class="relative">
+          <button 
+            class="px-6 py-3 bg-white border border-gray-700 text-gray-800 shadow-sm hover:bg-gray-50 rounded-xl transition-all flex items-center gap-3"
+            data-dropdown-toggle="previewDropdown"
+          >
+            <span class="text-lg">◉</span>
+            <span class="text-base font-medium">Preview</span>
+          </button>
+          <div id="previewDropdown" data-dropdown class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 hidden border border-gray-200">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">◎ View as Guest</a>
+          </div>
+        </div>
+
+        {/* Privacy Button */}
+        <div class="relative">
+          <button 
+            class="px-6 py-3 bg-white border border-gray-700 text-gray-800 shadow-sm hover:bg-gray-50 rounded-xl transition-all flex items-center gap-3"
+            data-dropdown-toggle="privacyDropdown"
+          >
+            <span class="text-lg">⊗</span>
+            <span class="text-base font-medium">Privacy</span>
+          </button>
+          <div id="privacyDropdown" data-dropdown class="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 hidden border border-gray-200">
+            <div class="px-4 py-2">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-bold text-gray-900">Privacy Status:</span>
+                <span id="privacyStatus" class="text-sm font-medium text-green-600">Public</span>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="privacyToggle" class="sr-only peer" checked>
+                <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+              </label>
+              <p class="mt-2 text-xs text-gray-600">When private, this memorial won't appear in community pages</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Share Button */}
+        <div class="relative">
+          <button 
+            class="px-6 py-3 bg-white border border-gray-700 text-gray-800 shadow-sm hover:bg-gray-50 rounded-xl transition-all flex items-center gap-3"
+            data-dropdown-toggle="shareDropdown"
+          >
+            <span class="text-lg">↗</span>
+            <span class="text-base font-medium">Share</span>
+          </button>
+          <div id="shareDropdown" data-dropdown class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 hidden border border-gray-200">
+            <button class="block w-full px-4 py-2 text-sm text-gray-900 hover:bg-gray-50 text-left" onclick="shareByEmail()">
+              ✉ Share by Email
+            </button>
+            <button class="block w-full px-4 py-2 text-sm text-gray-900 hover:bg-gray-50 text-left" onclick="copyLink()">
+              ⎘ Copy Link
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Header Section - Without Stats */}
+  <div class="relative max-w-6xl mx-auto px-4 pt-4 md:pt-8">
+    {/* Profile Content */}
+    <div class="mb-4 bg-amber-50/30 rounded-3xl p-4">
+      <div class="flex flex-col md:flex-row gap-6">
+        {/* Left Side - Profile Image */}
+        <div class="w-full md:w-1/3">
+          <div class="flex flex-col items-center">
+            <div class="relative w-52 h-52">
               <img 
                 src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" 
                 alt="Pet Name" 
                 class="w-full h-full object-cover rounded-full shadow-lg border-4 border-white"
               />
-              <button class="absolute bottom-2 right-2 p-2 bg-white rounded-full shadow-lg hover:bg-gray-50">
-                <PencilSquareIcon class="w-4 h-4 text-gray-600" />
-              </button>
             </div>
-          </div>
-
-          {/* Pet Details */}
-          <div class="w-full md:w-2/3 space-y-4">
-            {/* Name and Alias */}
-            <div class="space-y-2">
-              <div class="flex items-center gap-2">
-                <h1 class="text-3xl font-bold text-gray-900">Luna</h1>
-                <button class="p-1 hover:bg-gray-100 rounded">
-                  <PencilSquareIcon class="w-4 h-4 text-gray-600" />
-                </button>
+            <div class="mt-3 flex flex-col items-center">
+              <h1 class="text-3xl font-bold text-gray-900 text-center">Luna</h1>
+              <div class="mt-3 bg-white/30 backdrop-blur-sm rounded-xl p-3 border border-white/30 w-48">
+                <p class="text-xs uppercase tracking-wider text-amber-700/70 mb-1 text-center">Memorial Keeper</p>
+                <p class="text-sm font-medium text-amber-700 text-center">Sarah Johnson</p>
               </div>
-              <div class="flex items-center gap-2">
-                <span class="text-lg text-gray-600">aka: Lulu, Moon Moon</span>
-                <button class="p-1 hover:bg-gray-100 rounded">
-                  <PencilSquareIcon class="w-3 h-3 text-gray-600" />
-                </button>
-              </div>
-            </div>
-
-            {/* Dates */}
-            <div class="flex items-center gap-x-6">
-              <div class="flex items-center gap-2">
-                <span class="text-gray-600">Birth: March 15, 2015</span>
-                <button class="p-1 hover:bg-gray-100 rounded">
-                  <PencilSquareIcon class="w-3 h-3 text-gray-600" />
-                </button>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-gray-600">Death: June 20, 2023</span>
-                <button class="p-1 hover:bg-gray-100 rounded">
-                  <PencilSquareIcon class="w-3 h-3 text-gray-600" />
-                </button>
-              </div>
-            </div>
-
-            {/* Favorite Toy */}
-            <div class="flex items-center gap-2">
-              <span class="text-gray-600">Favorite toy: Mr. Squeaky, the blue elephant</span>
-              <button class="p-1 hover:bg-gray-100 rounded">
-                <PencilSquareIcon class="w-3 h-3 text-gray-600" />
-              </button>
-            </div>
-
-            {/* Fun Facts / What They Like */}
-            <div class="flex items-start gap-2">
-              <div class="flex-grow">
-                <ul class="text-gray-600 list-disc list-inside space-y-1">
-                  <li class="flex items-center justify-between">
-                    <span>Loved chasing butterflies in the garden</span>
-                    <button class="p-1 hover:bg-gray-100 rounded">
-                      <PencilSquareIcon class="w-3 h-3 text-gray-600" />
-                    </button>
-                  </li>
-                  <li class="flex items-center justify-between">
-                    <span>Could never resist a belly rub</span>
-                    <button class="p-1 hover:bg-gray-100 rounded">
-                      <PencilSquareIcon class="w-3 h-3 text-gray-600" />
-                    </button>
-                  </li>
-                  <li class="flex items-center justify-between">
-                    <span>Always excited for car rides</span>
-                    <button class="p-1 hover:bg-gray-100 rounded">
-                      <PencilSquareIcon class="w-3 h-3 text-gray-600" />
-                    </button>
-                  </li>
-                  <li class="flex items-center justify-between">
-                    <span>Favorite treat was peanut butter</span>
-                    <button class="p-1 hover:bg-gray-100 rounded">
-                      <PencilSquareIcon class="w-3 h-3 text-gray-600" />
-                    </button>
-                  </li>
-                </ul>
-              </div>
-              <button class="p-1 hover:bg-gray-100 rounded mt-1">
-                <PlusIcon class="w-3 h-3 text-gray-600" />
-              </button>
             </div>
           </div>
         </div>
 
-        {/* Stats Card & Privacy Control - Right Side */}
-        <div class="w-full lg:w-48">
-          {/* Privacy Toggle Switch */}
-          <div class="mb-3 flex justify-end">
-            <label class="inline-flex items-center cursor-pointer">
-              <input 
-                type="checkbox" 
-                class="sr-only peer" 
-                checked
-                data-privacy-toggle
-              >
-              <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
-              <span class="ml-2 text-xs font-medium text-gray-600">
-                <span class="peer-checked:hidden">Private</span>
-                <span class="hidden peer-checked:inline">Public</span>
-              </span>
-            </label>
-          </div>
+        {/* Right Side - Info Card */}
+        <div class="w-full md:w-2/3">
+          <div class="bg-white/20 backdrop-blur-sm rounded-[2rem] p-6 pb-12 border border-white/30 relative">
+            {/* Main content */}
+            <div class="space-y-6">
+              {/* Basic Info Grid */}
+              <div class="grid grid-cols-2 gap-x-12 gap-y-6">
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-amber-700/70 mb-1">Gender</p>
+                  <p class="text-lg font-semibold text-gray-800" data-editable>♀️ Female</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-amber-700/70 mb-1">Born</p>
+                  <p class="text-lg font-semibold text-gray-800" data-editable>March 15, 2019</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-amber-700/70 mb-1">Breed</p>
+                  <p class="text-lg font-semibold text-gray-800" data-editable>Golden Retriever</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-amber-700/70 mb-1">Color</p>
+                  <p class="text-lg font-semibold text-gray-800" data-editable>Golden</p>
+                </div>
+              </div>
 
-          {/* Combined Stats Card */}
-          <div class="grid grid-cols-3 gap-4 text-center">
-            <div>
-              <div class="text-xl font-bold text-rose-500">127</div>
-              <div class="text-xs font-medium text-gray-500">Memories</div>
-            </div>
-            
-            <div>
-              <div class="text-xl font-bold text-rose-500">45</div>
-              <div class="text-xs font-medium text-gray-500">Tributes</div>
-            </div>
-            
-            <div>
-              <div class="text-xl font-bold text-rose-500">1.2k</div>
-              <div class="text-xs font-medium text-gray-500">Visits</div>
+              {/* Bio */}
+              <div>
+                <p class="text-xs uppercase tracking-wider text-amber-700/70 mb-1">Bio</p>
+                <p class="text-lg font-medium leading-relaxed text-gray-800" data-editable>
+                  Luna was the sweetest, most gentle soul. She loved playing fetch and swimming in the lake.
+                  Her favorite treats were peanut butter and carrots. She brought joy to everyone she met.
+                </p>
+              </div>
+
+              {/* Personality Section */}
+              <div>
+                <p class="text-xs uppercase tracking-wider text-amber-700/70 mb-2">Character & Personality</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm text-lg font-medium bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 bg-clip-text text-transparent border border-white/20 rounded-full">Loving</span>
+                  <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm text-lg font-medium bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 bg-clip-text text-transparent border border-white/20 rounded-full">Playful</span>
+                  <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm text-lg font-medium bg-gradient-to-r from-cyan-500 via-teal-500 to-green-500 bg-clip-text text-transparent border border-white/20 rounded-full">Gentle</span>
+                  <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm text-lg font-medium bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent border border-white/20 rounded-full">Smart</span>
+                </div>
+              </div>
+
+              {/* Favorites Section */}
+              <div>
+                <p class="text-xs uppercase tracking-wider text-amber-700/70 mb-2">Favorite Things</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm text-lg font-medium bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent border border-white/20 rounded-full">🦴 Bones</span>
+                  <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm text-lg font-medium bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 bg-clip-text text-transparent border border-white/20 rounded-full">🎾 Tennis Balls</span>
+                  <span class="px-3 py-1.5 bg-white/10 backdrop-blur-sm text-lg font-medium bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 bg-clip-text text-transparent border border-white/20 rounded-full">🏊‍♂️ Swimming</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -152,272 +187,141 @@ import {
     </div>
 
     {/* Tabs Navigation */}
-    <div class="max-w-6xl mx-auto px-4 mb-8">
-      <div class="border-b">
-        <nav class="flex gap-8">
+    <div class="max-w-6xl mx-auto mb-8">
+      <div class="border-b border-gray-200">
+        <nav class="flex justify-center gap-12">
           <button 
-            class="px-1 py-4 text-primary-600 border-b-2 border-primary-600 font-medium"
+            id="memoriesTab"
+            class="px-6 py-4 text-lg font-semibold relative transition-colors tab-button"
             data-tab="memories"
           >
             Memories
+            <div class="absolute bottom-0 left-0 w-full h-0.5 transition-all duration-200 ease-out"></div>
           </button>
           <button 
-            class="px-1 py-4 text-gray-500 hover:text-gray-700 font-medium"
-            data-tab="guestbook"
+            id="tributesTab"
+            class="px-6 py-4 text-lg font-semibold relative transition-colors tab-button"
+            data-tab="tributes"
           >
-            Guestbook
-          </button>
-          <button 
-            class="px-1 py-4 text-gray-500 hover:text-gray-700 font-medium"
-            data-tab="share"
-          >
-            Share
+            Tributes
+            <div class="absolute bottom-0 left-0 w-full h-0.5 transition-all duration-200 ease-out"></div>
           </button>
         </nav>
       </div>
     </div>
 
     {/* Content Sections */}
-    <div id="tabContent">
-      {/* Memories Section */}
-      <div id="memories" class="tab-content">
-        <div class="max-w-4xl mx-auto px-4">
-          <div class="flex justify-between items-center mb-8">
-            <div class="flex items-center gap-4">
-              <select class="bg-white px-3 py-1.5 rounded-full text-gray-600 text-sm border">
-                <option>Newest First</option>
-                <option>Oldest First</option>
-              </select>
+    <div id="memories" class="tab-content">
+      <div class="max-w-4xl mx-auto px-4">
+        {/* Memories Section Header */}
+        <div class="flex justify-between items-center mb-4 md:mb-8">
+          <select class="bg-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg md:rounded-xl text-gray-600 text-sm border border-gray-200 hover:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+          
+          {/* Add Memory Button */}
+          <button 
+            id="addMemoryBtn"
+            class="flex items-center gap-1.5 bg-white border border-amber-500 text-amber-600 px-4 py-2 rounded-lg text-sm hover:bg-amber-50 transition-all"
+          >
+            <span class="text-sm">+</span>
+            <span>Add Memory</span>
+          </button>
+        </div>
 
-              {/* View Toggle */}
-              <div class="flex items-center bg-gray-100 rounded-full p-1">
-                <button 
-                  class="p-1.5 rounded-full text-gray-600 hover:text-primary-600 view-toggle active"
-                  data-view="grid"
-                >
-                  <Squares2X2Icon class="w-4 h-4" />
+        {/* Grid View - Fixed 2 columns */}
+        <div class="grid grid-cols-2 gap-6">
+          {/* Memory Card 1 */}
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" 
+                alt="Memory" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-medium text-gray-900 mb-1">First Day at the Park</h3>
+              <p class="text-sm text-gray-500 mb-2">March 15, 2023</p>
+              <p class="text-gray-600 text-sm mb-4 line-clamp-2">Her first time seeing butterflies in the garden. She couldn't contain her excitement!</p>
+              <div class="flex items-center gap-4">
+                <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
+                  <HeartIcon class="w-4 h-4" />
+                  <span class="text-sm">24</span>
                 </button>
-                <button 
-                  class="p-1.5 rounded-full text-gray-600 hover:text-primary-600 view-toggle"
-                  data-view="list"
-                >
-                  <Bars3Icon class="w-4 h-4" />
+                <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
+                  <ChatBubbleLeftIcon class="w-4 h-4" />
+                  <span class="text-sm">12</span>
                 </button>
               </div>
             </div>
-            
-            <button 
-              class="flex items-center gap-1.5 bg-primary-600 text-white px-3 py-1.5 rounded-full text-sm hover:bg-primary-700 transition-colors"
-            >
-              <PlusIcon class="w-4 h-4" />
-              <span>Add Memory</span>
-            </button>
           </div>
 
-          {/* Grid View */}
-          <div class="grid-view">
-            <div class="grid grid-cols-2 gap-6">
-              {/* Memory Card 1 */}
-              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" 
-                    alt="Memory" 
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-                <div class="p-4">
-                  <h3 class="text-lg font-medium text-gray-900 mb-1">First Day at the Park</h3>
-                  <p class="text-sm text-gray-500 mb-2">March 15, 2023</p>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">Her first time seeing butterflies in the garden. She couldn't contain her excitement!</p>
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-4">
-                      <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
-                        <HeartIcon class="w-4 h-4" />
-                        <span class="text-sm">24</span>
-                      </button>
-                      <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
-                        <ChatBubbleLeftIcon class="w-4 h-4" />
-                        <span class="text-sm">12</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Memory Card 2 */}
-              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e" 
-                    alt="Memory" 
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-                <div class="p-4">
-                  <h3 class="text-lg font-medium text-gray-900 mb-1">Beach Day Adventure</h3>
-                  <p class="text-sm text-gray-500 mb-2">July 4, 2023</p>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">Luna's first time at the beach. She loved chasing the waves and digging in the sand!</p>
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-4">
-                      <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
-                        <HeartIcon class="w-4 h-4" />
-                        <span class="text-sm">18</span>
-                      </button>
-                      <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
-                        <ChatBubbleLeftIcon class="w-4 h-4" />
-                        <span class="text-sm">8</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Memory Card 3 */}
-              <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1" 
-                    alt="Memory" 
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-                <div class="p-4">
-                  <h3 class="text-lg font-medium text-gray-900 mb-1">Birthday Celebration</h3>
-                  <p class="text-sm text-gray-500 mb-2">June 22, 2023</p>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">Luna's special day! She got her favorite treats and a new toy.</p>
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-4">
-                      <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
-                        <HeartIcon class="w-4 h-4" />
-                        <span class="text-sm">32</span>
-                      </button>
-                      <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
-                        <ChatBubbleLeftIcon class="w-4 h-4" />
-                        <span class="text-sm">15</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Memory Card 2 */}
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+            <!-- Similar structure as Card 1 -->
           </div>
 
-          {/* List View */}
-          <div class="list-view hidden space-y-4">
-            {/* List View Memory 1 */}
-            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <div class="flex">
-                <div class="w-48 shrink-0">
-                  <div class="aspect-[4/3] overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" 
-                      alt="Memory" 
-                      class="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div class="flex-1 p-4">
-                  <h3 class="text-lg font-medium text-gray-900 mb-1">First Day at the Park</h3>
-                  <p class="text-sm text-gray-500 mb-2">March 15, 2023</p>
-                  <p class="text-gray-600 text-sm mb-4">Her first time seeing butterflies in the garden. She couldn't contain her excitement!</p>
-                  <div class="flex items-center gap-4">
-                    <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
-                      <HeartIcon class="w-4 h-4" />
-                      <span class="text-sm">24</span>
-                    </button>
-                    <button class="flex items-center gap-1 text-gray-500 hover:text-primary-600">
-                      <ChatBubbleLeftIcon class="w-4 h-4" />
-                      <span class="text-sm">12</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Add more list view items here */}
-          </div>
+          {/* Add more memory cards here */}
         </div>
       </div>
+    </div>
 
-      {/* Guestbook Section - Also Centered */}
-      <div id="guestbook" class="tab-content hidden">
-        <div class="max-w-4xl mx-auto px-4">
-          <div class="flex justify-between items-center mb-8">
-            <h2 class="text-xl font-medium text-gray-900">Messages & Tributes</h2>
-            <button 
-              class="flex items-center gap-1.5 bg-primary-600 text-white px-3 py-1.5 rounded-full text-sm hover:bg-primary-700 transition-colors"
-            >
-              <PlusIcon class="w-4 h-4" />
-              <span>Write Tribute</span>
-            </button>
-          </div>
-
-          <div class="space-y-6">
-            {/* Tribute Card */}
-            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-              <div class="flex items-start gap-4">
-                <img 
-                  src="/default-avatar.jpg" 
-                  alt="User Avatar" 
-                  class="w-10 h-10 rounded-full"
-                />
-                <div class="flex-1">
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h3 class="font-medium text-gray-900">Sarah Johnson</h3>
-                      <p class="text-sm text-gray-500">2 days ago</p>
-                    </div>
-                    <button class="text-gray-400 hover:text-gray-600">
-                      <EllipsisHorizontalIcon class="w-5 h-5" />
-                    </button>
-                  </div>
-                  <p class="mt-2 text-gray-600">Luna was such a joy to be around. I'll never forget her playful spirit and how she always greeted everyone with such enthusiasm.</p>
-                  <div class="mt-4 flex items-center gap-4">
-                    <button class="flex items-center gap-1 text-gray-500 hover:text-rose-500">
-                      <HeartIcon class="w-5 h-5" />
-                      <span class="text-sm">24</span>
-                    </button>
-                    <button class="text-sm text-gray-500 hover:text-gray-700">Reply</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div id="tributes" class="tab-content hidden">
+      <div class="max-w-4xl mx-auto px-4">
+        {/* Tributes Header - Matching Memories style */}
+        <div class="flex justify-between items-center mb-8">
+          <select class="bg-white px-4 py-2 rounded-xl text-gray-600 text-sm border border-gray-200 hover:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+          
+          {/* Add Tribute Button - Exactly matching Add Memory style */}
+          <button 
+            id="addTributeBtn"
+            class="flex items-center gap-1.5 bg-white border border-amber-500 text-amber-600 px-4 py-2 rounded-lg text-sm hover:bg-amber-50 transition-all"
+          >
+            <span class="text-sm">+</span>
+            <span>Add Tribute</span>
+          </button>
         </div>
-      </div>
 
-      {/* Share Section - Also Centered */}
-      <div id="share" class="tab-content hidden">
-        <div class="max-w-4xl mx-auto px-4">
-          <div class="bg-white rounded-2xl p-8 shadow-sm">
-            <h2 class="text-xl font-medium text-gray-900 mb-6">Share This Memorial</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-              {/* QR Code */}
-              <div class="text-center">
-                <div class="bg-gray-100 p-6 rounded-xl inline-block mb-4">
-                  <img src="/qr-code.png" alt="QR Code" class="w-40 h-40" />
-                </div>
-                <button class="text-primary-600 hover:text-primary-700 font-medium">
-                  Download QR Code
-                </button>
+        {/* Empty State - Show when no tributes */}
+        <div class="text-center py-12 bg-gray-50/50 rounded-2xl mb-8">
+          <div class="inline-block p-3 bg-amber-50 rounded-full mb-4">
+            <span class="text-3xl">🕊️</span>
+          </div>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">Share Your Memories</h3>
+          <p class="text-gray-600 max-w-sm mx-auto">
+            Honor Luna's memory with a heartfelt message. Your words help keep their spirit alive in our hearts.
+          </p>
+        </div>
+
+        {/* Tributes List */}
+        <div class="space-y-6">
+          {/* Sample Tribute */}
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-100 to-rose-100 flex items-center justify-center text-amber-700 font-medium">
+                SJ
               </div>
-
-              {/* Share Link */}
-              <div class="flex flex-col justify-center">
-                <p class="text-sm text-gray-600 mb-2">Memorial Link</p>
-                <div class="flex gap-2">
-                  <input 
-                    type="text" 
-                    value="https://memorial.com/luna" 
-                    class="flex-1 px-4 py-2 border rounded-lg bg-gray-50"
-                    readonly
-                  />
-                  <button class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700">
-                    Copy
-                  </button>
+              <div class="flex-1">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="text-base font-medium text-gray-900">Sarah Johnson</h4>
+                    <p class="text-sm text-gray-500">2 days ago</p>
+                  </div>
+                  <div class="flex items-center gap-2 text-rose-500">
+                    <span class="text-lg">♥</span>
+                    <span class="text-sm">12</span>
+                  </div>
                 </div>
+                <p class="mt-3 text-gray-600 leading-relaxed">
+                  Luna brought so much joy to everyone she met. Her gentle spirit and loving nature made every day brighter. 
+                  Thank you for sharing her with us. She will be deeply missed but her pawprints will forever remain in our hearts. 
+                  Rest peacefully, sweet girl. 🌈
+                </p>
               </div>
             </div>
           </div>
@@ -425,182 +329,305 @@ import {
       </div>
     </div>
   </div>
-</Layout>
 
-<script>
-  // Tab Switching Logic
-  const tabs = document.querySelectorAll('[data-tab]');
-  const tabContents = document.querySelectorAll('.tab-content');
+  {/* Add Memory Modal */}
+  <div id="addMemoryModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-xl w-full max-w-lg mx-4 p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-lg font-semibold text-gray-900">Add New Memory</h3>
+        <button id="closeMemoryModal" class="text-gray-400 hover:text-gray-600">✕</button>
+      </div>
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove active states
-      tabs.forEach(t => {
-        t.classList.remove('text-primary-600', 'border-b-2', 'border-primary-600');
-        t.classList.add('text-gray-500');
-      });
-      
-      // Add active state to clicked tab
-      tab.classList.add('text-primary-600', 'border-b-2', 'border-primary-600');
-      tab.classList.remove('text-gray-500');
-      
-      // Show correct content
-      const tabId = tab.dataset.tab;
-      tabContents.forEach(content => {
-        content.classList.add('hidden');
-      });
-      document.getElementById(tabId)?.classList.remove('hidden');
-    });
-  });
+      <form id="newMemoryForm" class="space-y-4">
+        {/* Date Input */}
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+          <input 
+            type="date" 
+            name="memoryDate"
+            required
+            min="1900-01-01"
+            max={new Date().toISOString().split('T')[0]}
+            class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"
+          >
+        </div>
 
-  // Copy Link Functionality
-  const copyBtn = document.querySelector('button:contains("Copy")');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const input = copyBtn.previousElementSibling;
-      input.select();
-      document.execCommand('copy');
-      
-      // Show feedback
-      copyBtn.textContent = 'Copied!';
-      setTimeout(() => {
-        copyBtn.textContent = 'Copy';
-      }, 2000);
-    });
-  }
+        {/* Headline */}
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Headline</label>
+          <input 
+            type="text" 
+            name="headline"
+            placeholder="Give your memory a title"
+            required
+            maxlength="100"
+            class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"
+          >
+        </div>
 
-  // Privacy Toggle Logic
-  const privacyToggle = document.querySelector('[data-privacy-toggle]');
-  if (privacyToggle) {
-    privacyToggle.addEventListener('click', () => {
-      const isPublic = privacyToggle.getAttribute('data-is-public') === 'true';
-      const newState = !isPublic;
-      
-      // Update the text and styling
-      const toggleText = privacyToggle.querySelector('span');
-      if (toggleText) {
-        toggleText.textContent = newState ? 'Public' : 'Private';
-        
-        // Optional: Update colors/styling based on state
-        if (newState) {
-          toggleText.classList.remove('text-gray-600');
-          toggleText.classList.add('text-primary-600');
-        } else {
-          toggleText.classList.remove('text-primary-600');
-          toggleText.classList.add('text-gray-600');
+        {/* Description */}
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <textarea 
+            name="description"
+            rows="4"
+            placeholder="Share your memory..."
+            required
+            maxlength="500"
+            class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"
+          ></textarea>
+        </div>
+
+        {/* Image Upload */}
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Add Photos</label>
+          <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
+            <div class="space-y-2 text-center">
+              <div class="mx-auto h-12 w-12 text-gray-400">
+                <svg class="mx-auto h-12 w-12" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="flex text-sm text-gray-600">
+                <label class="relative cursor-pointer bg-white rounded-md font-medium text-amber-600 hover:text-amber-500">
+                  <span>Upload photos</span>
+                  <input 
+                    id="imageInput"
+                    type="file" 
+                    multiple 
+                    accept="image/*"
+                    class="sr-only"
+                    name="images"
+                  >
+                </label>
+                <p class="pl-1">or drag and drop</p>
+              </div>
+              <p class="text-xs text-gray-500">PNG, JPG up to 10MB each</p>
+            </div>
+          </div>
+          {/* Image Preview Area */}
+          <div id="imagePreview" class="mt-4 grid grid-cols-3 gap-4"></div>
+        </div>
+
+        <div class="flex justify-end gap-3 pt-4">
+          <button 
+            type="button" 
+            id="cancelMemory"
+            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+          >
+            Cancel
+          </button>
+          <button 
+            type="submit"
+            class="px-4 py-2 text-sm font-medium text-white bg-amber-600 rounded-lg hover:bg-amber-700"
+          >
+            Save Memory
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<script is:inline>
+  // 立即执行的函数
+  (function() {
+    // 等待DOM加载完成
+    window.addEventListener('load', function() {
+      console.log('Script loading...'); // 调试日志
+
+      // 获取元素
+      const addBtn = document.getElementById('addMemoryBtn');
+      const modal = document.getElementById('addMemoryModal');
+      const closeBtn = document.getElementById('closeMemoryModal');
+      const cancelBtn = document.getElementById('cancelMemory');
+      const form = document.getElementById('newMemoryForm');
+
+      console.log('Add button:', addBtn); // 调试日志
+      console.log('Modal:', modal); // 调试日志
+
+      // 打开弹窗
+      if (addBtn && modal) {
+        addBtn.addEventListener('click', function() {
+          console.log('Button clicked!'); // 调试日志
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+
+      // 关闭弹窗函数
+      const closeModal = function() {
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          document.body.style.overflow = 'auto';
+          if (form) form.reset();
+        }
+      };
+
+      // 关闭按钮点击
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+      }
+
+      // 取消按钮点击
+      if (cancelBtn) {
+        cancelBtn.addEventListener('click', closeModal);
+      }
+
+      // 点击弹窗外部关闭
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) closeModal();
+        });
+      }
+
+      // 防止点击弹窗内部时关闭
+      const modalContent = modal?.querySelector('.bg-white');
+      if (modalContent) {
+        modalContent.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+
+      // 表单提交处理
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          console.log('Form submitted:', Object.fromEntries(formData));
+          closeModal();
+        });
+      }
+
+      // 图片上传预览
+      const imageInput = document.getElementById('imageInput');
+      const imagePreview = document.getElementById('imagePreview');
+
+      if (imageInput && imagePreview) {
+        imageInput.addEventListener('change', function(e) {
+          imagePreview.innerHTML = ''; // 清空预览区域
+          
+          const files = e.target.files;
+          Array.from(files).forEach(file => {
+            // 检查文件大小
+            if (file.size > 10 * 1024 * 1024) {
+              alert('File size must be less than 10MB');
+              return;
+            }
+
+            // 检查文件类型
+            if (!file.type.startsWith('image/')) {
+              alert('Only image files are allowed');
+              return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const preview = document.createElement('div');
+              preview.className = 'relative aspect-square rounded-lg overflow-hidden bg-gray-100';
+              
+              const img = document.createElement('img');
+              img.src = e.target.result;
+              img.className = 'w-full h-full object-cover';
+              
+              // 添加删除按钮
+              const deleteBtn = document.createElement('button');
+              deleteBtn.className = 'absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600';
+              deleteBtn.innerHTML = '✕';
+              deleteBtn.onclick = function() {
+                preview.remove();
+              };
+              
+              preview.appendChild(img);
+              preview.appendChild(deleteBtn);
+              imagePreview.appendChild(preview);
+            };
+            reader.readAsDataURL(file);
+          });
+        });
+
+        // 拖拽上传
+        const dropZone = imageInput.closest('.border-dashed');
+        if (dropZone) {
+          dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-amber-500');
+          });
+
+          dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-amber-500');
+          });
+
+          dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-amber-500');
+            imageInput.files = e.dataTransfer.files;
+            imageInput.dispatchEvent(new Event('change'));
+          });
         }
       }
-      
-      privacyToggle.setAttribute('data-is-public', newState);
-    });
-  }
 
-  // Toggle Comments Section
-  document.querySelectorAll('.memory-card').forEach(card => {
-    const commentBtn = card.querySelector('[data-comment-btn]');
-    const commentsSection = card.querySelector('.comments-section');
-    
-    if (commentBtn && commentsSection) {
-      commentBtn.addEventListener('click', () => {
-        commentsSection.classList.toggle('hidden');
+      // Tab switching functionality
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      function switchTab(tabId) {
+        // 更新所有 tab 按钮的状态
+        tabButtons.forEach(button => {
+          const isActive = button.dataset.tab === tabId;
+          
+          // 更新按钮样式
+          if (isActive) {
+            // 活动状态：深色文字，底部条，背景色
+            button.classList.add('text-amber-600', 'font-bold');
+            button.classList.remove('text-gray-500', 'hover:text-gray-700');
+            button.querySelector('div').classList.add('bg-amber-600');
+            button.querySelector('div').classList.remove('bg-transparent');
+          } else {
+            // 非活动状态：浅色文字，无底部条
+            button.classList.remove('text-amber-600', 'font-bold');
+            button.classList.add('text-gray-500', 'hover:text-gray-700');
+            button.querySelector('div').classList.remove('bg-amber-600');
+            button.querySelector('div').classList.add('bg-transparent');
+          }
+        });
+
+        // 更新内容区域
+        tabContents.forEach(content => {
+          if (content.id === tabId) {
+            content.classList.remove('hidden');
+          } else {
+            content.classList.add('hidden');
+          }
+        });
+      }
+
+      // 为每个 tab 添加点击事件
+      tabButtons.forEach(button => {
+        // 添加默认悬停效果
+        button.classList.add('hover:text-gray-700');
+        
+        button.addEventListener('click', () => {
+          const tabId = button.dataset.tab;
+          switchTab(tabId);
+        });
       });
-    }
-  });
 
-  // Like Functionality
-  document.querySelectorAll('[data-like-btn]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const countSpan = btn.querySelector('span');
-      const currentCount = parseInt(countSpan.textContent);
-      const isLiked = btn.classList.contains('text-rose-500');
-      
-      btn.classList.toggle('text-rose-500');
-      countSpan.textContent = isLiked ? currentCount - 1 : currentCount + 1;
+      // 初始化第一个 tab 为活动状态
+      switchTab('memories');
     });
-  });
-
-  // Comment Post Handler
-  document.querySelectorAll('.comment-form').forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = form.querySelector('input');
-      if (input.value.trim()) {
-        // Here you would typically send the comment to your server
-        console.log('New comment:', input.value);
-        input.value = '';
-      }
-    });
-  });
-
-  // Modal Controls
-  const modal = document.getElementById('memoryModal');
-  const addMemoryBtn = document.getElementById('addMemoryBtn');
-  const closeModal = document.getElementById('closeModal');
-
-  if (addMemoryBtn && modal && closeModal) {
-    // Show modal
-    addMemoryBtn.addEventListener('click', () => {
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    });
-
-    // Hide modal
-    closeModal.addEventListener('click', () => {
-      modal.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    });
-
-    // Close modal when clicking outside
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-      }
-    });
-  }
-
-  // Image Upload Preview
-  const fileInput = document.querySelector('input[type="file"]');
-  const browseButton = document.querySelector('button[type="button"]');
-
-  if (fileInput && browseButton) {
-    browseButton.addEventListener('click', () => {
-      fileInput.click();
-    });
-
-    fileInput.addEventListener('change', (e) => {
-      // Here you would typically handle the file preview
-      console.log('Files selected:', e.target.files);
-    });
-  }
-
-  // View Toggle Logic
-  const viewToggles = document.querySelectorAll('.view-toggle');
-  const gridView = document.querySelector('.grid-view');
-  const listView = document.querySelector('.list-view');
-
-  viewToggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
-      // Update toggle buttons
-      viewToggles.forEach(t => t.classList.remove('bg-white', 'text-primary-600'));
-      toggle.classList.add('bg-white', 'text-primary-600');
-
-      // Show correct view
-      const view = toggle.dataset.view;
-      if (view === 'grid') {
-        gridView?.classList.remove('hidden');
-        listView?.classList.add('hidden');
-      } else {
-        gridView?.classList.add('hidden');
-        listView?.classList.remove('hidden');
-      }
-    });
-  });
+  })();
 </script>
 
 <style>
-  .view-toggle.active {
-    @apply bg-white text-primary-600;
+  .tab-button {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  /* 活动状态的悬停效果 */
+  .tab-button.text-amber-600:hover {
+    @apply text-amber-700;
   }
 </style>
-</rewritten_file> 
+</rewritten_file>
